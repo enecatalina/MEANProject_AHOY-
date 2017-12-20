@@ -46,6 +46,14 @@ export class DataService {
             .toPromise()
     }
 
+    logUser(user){
+        console.log("IN Service data | log user")
+        console.log("User-->", user)
+        return this._http.post('/API/loggingIN', user)
+            .map(response => response.json())
+            .toPromise()
+    }
+
 // finding user, team, and messages
 
     getUser() {
@@ -64,6 +72,7 @@ export class DataService {
             .map(response => this.retreiveAllChannels(response.json()))
             .toPromise();
     }
+
 
 // using these functions for the get function above
 
