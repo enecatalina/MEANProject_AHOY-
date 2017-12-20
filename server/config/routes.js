@@ -15,15 +15,12 @@ module.exports = function (app) {
     //     TeamController.getAll(req, res);
     // })
 
-<<<<<<< HEAD
     app.get('/API/getMessage', function (req, res) {
         ChatController.getAll(req, res);
     })
-=======
     // app.get('/API/getMessage', function (req, res) {
     //     ChatController.getAll(req, res);
     // })
->>>>>>> upstream/master
 
     // app.get('/API/getChannel', function (req, res) {
     //     ChannelController.find(req, res);
