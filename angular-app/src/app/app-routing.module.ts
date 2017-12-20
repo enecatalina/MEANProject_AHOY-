@@ -42,7 +42,6 @@ const routes: Routes = [
     pathMatch: 'full',
     component: ChatComponent,
     children: [],
-
   },
   // {
   //   path: '**', //this was preventing my form from channel component from displaying

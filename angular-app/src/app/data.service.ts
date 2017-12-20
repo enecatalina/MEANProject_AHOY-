@@ -3,14 +3,19 @@ import { Http } from '@angular/http';
 import { BehaviorSubject } from 'Rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import * as io from 'socket.io-client';
 @Injectable()
 export class DataService {
 
-private modals: any[] = [];
+    private url = 'http://localhost:4000';
+    private socket;
+    private modals: any[] = [];
     
   allusers: BehaviorSubject<any[]> = new BehaviorSubject([]);
   allteams: BehaviorSubject<any[]> = new BehaviorSubject([]);
-  allmessages: BehaviorSubject<any[]> = new BehaviorSubject([]);
+//   allmessages: BehaviorSubject<any[]> = new BehaviorSubject([]); // not sure if I need this yet
   allchannels: BehaviorSubject<any[]> = new BehaviorSubject([]);
 
   constructor(private _http: Http) { }
@@ -32,13 +37,7 @@ private modals: any[] = [];
             .map(response => response.json())
             .toPromise()
     }
-    addMessage(message) {
-        console.log('Note:', message);
-        console.log('made it!')
-        return this._http.post('/API/createMessage', message)
-            .map(response => response.json())
-            .toPromise()
-    }
+
     addChannel(channel) {
         console.log('Channel:', channel);
         console.log('made it to channels data service!')
@@ -60,11 +59,6 @@ private modals: any[] = [];
             .toPromise();
     }
 
-    // getMessage() {
-    //     return this._http.get('/API/getMessage')
-    //         .map(response => this.retreiveAllTeams(response.json()))
-    //         .toPromise();
-    // }
     getChannel() {
         return this._http.get('/API/getChannel')
             .map(response => this.retreiveAllChannels(response.json()))
@@ -85,22 +79,34 @@ private modals: any[] = [];
         return this.allteams;
     }
 
-    retreiveAllMessages(newMessage) {
-        this.allusers.next(newMessage);
-        console.log('retreive users,', this.allmessages)
-        return this.allmessages;
-    }
-
     retreiveAllChannels(newChannel) {
         this.allusers.next(newChannel);
         console.log('retreive channels,', this.allchannels)
         return this.allchannels;
     }
 
-// CHAT ROOM // \\ // \\ // \\ // \\ // \\
+// CHAT ROOM // \\ // \\ // \\ // \\ // \\ do not touch // \\
+
+    // sendMessage(message) {
+    //     this.socket.emit('add-message', message);
+    // }
+
+    // getMessages() {
+    //     let observable = new Observable(observer => {
+    //         this.socket = io(this.url);
+    //         this.socket.on('message', (data) => {
+    //             observer.next(data);
+    //         });
+    //         return () => {
+    //             this.socket.disconnect();
+    //         };
+    //     })
+    //     return observable;
+    // }  
 
     getChatByRoom(room) {
         return new Promise((resolve, reject) => {
+            console.log("in get CHAT ROOOM")
             this._http.get('/chat/' + room)
                 .map(res => res.json())
                 .subscribe(res => {
@@ -113,6 +119,7 @@ private modals: any[] = [];
 
     saveChat(data) {
         return new Promise((resolve, reject) => {
+            console.log("in get SAVE CHAT")
             this._http.post('/chat', data)
                 .map(res => res.json())
                 .subscribe(res => {
@@ -122,6 +129,9 @@ private modals: any[] = [];
                 });
         });
     }
+// \\ end of chat room \\//\\
+
+
 // That codes using Promise response instead of Observable.
 
 

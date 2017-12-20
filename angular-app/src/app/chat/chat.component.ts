@@ -9,11 +9,16 @@ import * as io from "socket.io-client";
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
-  chats: any;
+  // messages = [];
+  // connection;
+  // message;
+
+  chats: any = [];
+  socket = io('http://localhost:4000');
   joinned: boolean = false;
   newUser = { 
     nickname: '', 
@@ -24,28 +29,47 @@ export class ChatComponent implements OnInit {
     nickname: '', 
     message: '' };
 
-  socket = io('http://localhost:8000');
+  constructor(private _router: Router, private _route: ActivatedRoute, private dataService: DataService) {}
 
-  constructor(private _router: Router, private _route: ActivatedRoute, private dataService: DataService) { }
+    // sendMessage() {
+    //   this.dataService.sendMessage(this.message);
+    //   this.message = '';
+    // }
+
+    // ngOnInit() {
+    //   this.connection = this.dataService.getMessages().subscribe(message => {
+    //     this.messages.push(message);
+    //   })
+    // }
+
+    // ngOnDestroy() {
+    //   this.connection.unsubscribe();
+    // }
 
   ngOnInit() {
     var user = JSON.parse(localStorage.getItem("user"));
     if (user !== null) {
-      this.getChatByRoom(user.room);
-      this.msgData = { room: user.room, nickname: user.nickname, message: '' }
-      this.joinned = true;
+      this.getChatByRoom(user.room); // function callback
+      console.log('USER IS NOT NULL -- IN CHAT ROOM')
+      this.msgData = 
+      { room: user.room, 
+        nickname: user.nickname, 
+        message: '' }
+      this.joinned = true; // user has joined
       this.scrollToBottom();
     }
     this.socket.on('new-message', function (data) {
       if (data.message.room === JSON.parse(localStorage.getItem("user")).room) {
-        this.chats.push(data.message);
+        console.log('SOCKET IS WORKING!')
+        this.chats.push(data.message); // appending the message to chats 
         this.msgData = { 
           room: user.room, 
           nickname: user.nickname, 
-          message: '' }
-        this.scrollToBottom();
+          message: '' } // resetting
+        this.scrollToBottom(); // function to scroll all messages
       }
     }.bind(this));
+
   }
 
   ngAfterViewChecked() {
@@ -58,6 +82,7 @@ export class ChatComponent implements OnInit {
     } catch (err) { }
   }
 
+// function to get chat room
   getChatByRoom(room) {
     this.dataService.getChatByRoom(room).then((res) => {
       this.chats = res;

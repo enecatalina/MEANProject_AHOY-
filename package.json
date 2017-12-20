@@ -27,6 +27,7 @@
     "socketio": "^1.0.0"
   },
   "devDependencies": {
-    "@angular/cli": "^1.6.1"
+    "@angular/cli": "^1.6.1",
+    "@types/socket.io": "^1.4.29"
   }
 }
