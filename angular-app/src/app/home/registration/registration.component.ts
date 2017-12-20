@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
+import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +9,7 @@ import { DataService } from '../../data.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService: DataService, private _route: Router) { }
 
   newPerson = {
     email: '',
@@ -19,20 +20,24 @@ export class RegistrationComponent implements OnInit {
   submitted;
   
   onSubmit() {
+    console.log("IN: Registration | onSubmit()")
     console.log(this.newPerson);
     this._dataService.addUser(this.newPerson)
       .then(response => this.submitted = response)
-    console.log("YAS", this.submitted);
     this._dataService.getUser()
     this.newPerson = {
       email: '',
       fullname: '',
       displayname: '',
-      password: ''
+      password: '',
     }
+    console.log("IN: RegisterComponent | SUBMITTED")
+    this._route.navigateByUrl('Team')
   }
 
   ngOnInit() {
+    // var user = JSON.parse(localStorage.getItem("user"))
+    // console.log(user)
   }
 
 }

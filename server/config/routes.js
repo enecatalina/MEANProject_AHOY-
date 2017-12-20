@@ -38,6 +38,10 @@ module.exports = function (app) {
         ChannelController.createChannel(req, res);
     })
 
+    app.post('/API/loggingIN', function (req, res) {
+        UserController.logging(req, res);
+    })
+
 // chat routes // \\ do not touch 
 
     // app.get('/', (req, res) => {
