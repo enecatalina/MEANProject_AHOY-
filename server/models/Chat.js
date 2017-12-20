@@ -15,9 +15,7 @@ var ChatSchema = new mongoose.Schema({
     nickname: {
         type: String
     },
-    updated_at: 
-    { type: Date, default: Date.now },
-    // _user: [{
+    // users: [{
     //     type: Schema.Types.ObjectId,
     //     ref: 'User',
     // }],

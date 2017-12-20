@@ -60,7 +60,7 @@ export class DataService {
     }
 
     getChannel() {
-        return this._http.get('/API/getChannel')
+        return this._http.get('/API/getChannel/:id')
             .map(response => this.retreiveAllChannels(response.json()))
             .toPromise();
     }
@@ -80,7 +80,7 @@ export class DataService {
     }
 
     retreiveAllChannels(newChannel) {
-        this.allusers.next(newChannel);
+        this.allchannels.next(newChannel);
         console.log('retreive channels,', this.allchannels)
         return this.allchannels;
     }
