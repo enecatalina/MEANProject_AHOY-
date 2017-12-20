@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var error;
 var UserSchema = new mongoose.Schema({
     email: {
@@ -31,7 +32,19 @@ var UserSchema = new mongoose.Schema({
         minlength: 1,
         trim: true,
         required: true
-    }
+    },
+    channels: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Channel',
+    }],
+    teams: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Team',
+    }],
+    chats: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Chat',
+    }],
 }, { timestamps: true });
 
 

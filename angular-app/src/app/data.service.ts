@@ -66,7 +66,7 @@ private modals: any[] = [];
     //         .toPromise();
     // }
     getChannel() {
-        return this._http.get('/API/getChannel')
+        return this._http.get('/API/getChannel/:id')
             .map(response => this.retreiveAllChannels(response.json()))
             .toPromise();
     }
@@ -92,7 +92,7 @@ private modals: any[] = [];
     }
 
     retreiveAllChannels(newChannel) {
-        this.allusers.next(newChannel);
+        this.allchannels.next(newChannel);
         console.log('retreive channels,', this.allchannels)
         return this.allchannels;
     }

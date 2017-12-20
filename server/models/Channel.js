@@ -8,10 +8,14 @@ var ChannelSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    // _user: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    // }],
+    _anchor: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    }],
     invited: {
         type: String,
     },

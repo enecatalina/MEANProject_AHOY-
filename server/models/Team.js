@@ -8,14 +8,14 @@ var TeamSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    // _captain: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    // },
-    // _user: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    // }],
+    _captain: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    }],
 }, { timestamps: true });
 
 

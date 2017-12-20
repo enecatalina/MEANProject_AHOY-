@@ -5,10 +5,23 @@ module.exports = (function () {
 
     return {
         index: function (req, res) {
-            Channel.find({}, function (err, channel) {
+            Channel.find({_id: req.params.id})
+                .populate('_anchor')
+                .populate('users')
+                .exec(function(err, channel) {
+                    if (err) {
+                        console.log('===-- ERRRORRR --====')
+                        console.log(err)
+                        return res.json({ 'error': error });
+                    }
+                    else {
+                        console.log("Success!")
+                        console.log('THIS CHANNEL IS', channel)
+                        return res.json(channel);
+                    }
+                })
                 // res.json({ 'channels': channel })
-                res.json(channel);
-            });
+                
         },
 
 

@@ -6,10 +6,8 @@ module.exports = (function () {
     return {
         index: function (req, res) {
             User.find({}, function (err, User) {
-                res.render('index', {
-                    User: User
-                });
-            });
+                res.json(User)
+            })
         },
 
 
