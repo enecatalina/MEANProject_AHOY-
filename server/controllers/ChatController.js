@@ -21,7 +21,7 @@ io.on('connection', function (socket) {
 });
 
 /* GET ALL CHATS */
-router.get('/:room', function (req, res, next) {
+router.get('/API/getChat/:room', function (req, res, next) {
     Chat.find({ room: req.params.room }, function (err, chats) {
         if (err) return next(err);
         res.json(chats);
@@ -29,7 +29,7 @@ router.get('/:room', function (req, res, next) {
 });
 
 /* SAVE CHAT */
-router.post('/', function (req, res, next) {
+router.post('/API/chatting', function (req, res, next) {
     Chat.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);

@@ -7,6 +7,9 @@ var ChatSchema = new mongoose.Schema({
         minlength: 1,
         trim: true
     },
+    nickname: {
+        type: String
+    },
     _user: [{
         type: Schema.Types.ObjectId,
         ref: 'User',
