@@ -12,7 +12,7 @@ module.exports = (function () {
                     if (err) {
                         console.log('===-- ERRRORRR --====')
                         console.log(err)
-                        return res.json({ 'error': error });
+                        // return res.json({ 'error': error });
                     }
                     else {
                         console.log("Success!")
@@ -40,6 +40,7 @@ module.exports = (function () {
                     return res.json({ 'error': error });
                 }
                 else {
+                    req.session.currentUser = user._id
                     console.log('MAMA, I MADE IT!')
                     console.log('THIS CHANNEL IS', channel)
                     return res.json({ 'newChannel': channel })

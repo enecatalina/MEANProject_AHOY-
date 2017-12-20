@@ -28,14 +28,14 @@
           <div class="errors">
             <p *ngIf="purpose.errors && purpose.dirty">Purpose is required </p>
           </div>
-          Send invites to:
+          <!-- Send invites to:
         <input type="text" name="invited" class="form-control" placeholder="Who would you like to join this channel?" 
         required  
         [(ngModel)]='NewChannel.invited'
         #invited="ngModel" />
         <div class="errors">
           <p *ngIf="invited.errors && invited.dirty">Invite someone! </p>
-        </div>
+        </div> -->
         <div class="form-group">
           <button class="btn btn-success" *ngIf="!userForm.valid" disabled>Create Channel!</button>
           <button type="submit" class="btn btn-success" *ngIf="userForm.valid">Create Channel!</button>

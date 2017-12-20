@@ -44,6 +44,7 @@ export class DataService {
         return this._http.post('/API/createChannel', channel)
             .map(response => response.json())
             .toPromise()
+            //check for the current user who is making the channel and attach them to this channel 
     }
 
 // finding user, team, and messages
