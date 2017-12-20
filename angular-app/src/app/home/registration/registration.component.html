@@ -1,47 +1,42 @@
-<div class="container">
-  <div class="row">
-    <form (submit)="onSubmit()" #userForm="ngForm" class="w-100">
-      <div class="row">
-        <div class="col-6">
-          <div class="form-group">
-            <span name="email"></span>
-            <input type="text" name="email" class="form-control" placeholder="*Email" required minlength="4" [(ngModel)]='newPerson.email'
-              #email="ngModel" />
-            <div class="errors">
-              <p *ngIf="email.errors && email.dirty">Email is required</p>
-            </div>
-          </div>
-          <div class="form-group">
-            <span name="fullname"></span>
-            <input type="text" name="fullname" class="form-control" placeholder="*Full Name" required minlength="4" [(ngModel)]='newPerson.fullname'
-              #fullname="ngModel" />
-            <div class="errors">
-              <p *ngIf="fullname.errors && fullname.dirty">Full name is required</p>
-            </div>
-          </div>
-          <div class="form-group">
-            <span name="displayname"></span>
-            <input type="text" name="displayname" class="form-control" placeholder="*Display Name" required minlength="4" [(ngModel)]='newPerson.displayname'
-              #displayname="ngModel" />
-            <div class="errors">
-              <p *ngIf="displayname.errors && displayname.dirty">Display name is required</p>
-            </div>
-          </div>
-          <div class="form-group">
-            <span name="password"></span>
-            <input type="password" name="password" class="form-control" placeholder="*password" required minlength="4" [(ngModel)]='newPerson.password'
-              #password="ngModel" />
-            <div class="errors">
-              <p *ngIf="password.errors && password.dirty">Password is required</p>
-            </div>
-          </div>
-          <div class="form-group">
-              <input type="submit" value="Login!" class="btn btn-success" disabled="!email.valid || !password.valid || !fullname.valid || ">
-            <button class="btn btn-success" disabled="!userForm.valid">Create!</button>
-          </div>
+<div class="container-fluid">
+  <form (submit)="onSubmit()" #userForm="ngForm">
+    <fieldset>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" 
+        required
+        minlength="4" 
+        [(ngModel)]='newPerson.email' 
+        #email="ngModel" 
+        name="email">
+        <div class="form-group has-danger">
+          <p *ngIf="email.errors && email.dirty" class="invalid-feedback">Email is required</p>
         </div>
       </div>
-    </form>
-  </div>
-</div>
 
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" 
+        required minlength="4" 
+        [(ngModel)]='newPerson.password'
+        #password="ngModel" 
+        name="password">
+
+        <div class="form-group has-danger">
+          <p *ngIf="password.errors && password.dirty" class="invalid-feedback">Password is required</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputFullName3">Full Name</label>
+        <input type="text" class="form-control" id="exampleInputFullName3" placeholder="Password" required minlength="4" [(ngModel)]='newPerson.fullname'
+          #fullname="ngModel" name="fullname">
+
+        <div class="form-group has-danger">
+          <p *ngIf="fullname.errors && fullname.dirty" class="invalid-feedback">Password is required</p>
+        </div>
+      </div>
+      <button class="btn btn-success" [disabled]="!userForm.valid">Submit!</button>
+    </fieldset>
+  </form>
+</div>
