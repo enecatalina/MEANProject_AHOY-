@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var error;
-var bcrypt = require('bcrypt-as-promised');
+// var bcrypt = require('bcrypt-as-promised');
 var UserSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -48,19 +48,19 @@ var UserSchema = new mongoose.Schema({
     }],
 }, { timestamps: true });
 
-UserSchema.pre('save', function (done) {
-    console.log("IN START OF PRE FUNCTION")
-    bcrypt.hash(this.password, 10)
-        .then(hashed_password => { //this is the hashed password! now set what the user has just entered in here as this hashed password
-            console.log("HASHED PASS")
-            console.log(hashed_password)
-            this.password = hashed_password;
-            done();
-        })
-        .catch(error => {
-            done();
-        });
-    }),
+// UserSchema.pre('save', function (done) {
+//     console.log("IN START OF PRE FUNCTION")
+//     bcrypt.hash(this.password, 10)
+//         .then(hashed_password => { //this is the hashed password! now set what the user has just entered in here as this hashed password
+//             console.log("HASHED PASS")
+//             console.log(hashed_password)
+//             this.password = hashed_password;
+//             done();
+//         })
+//         .catch(error => {
+//             done();
+//         });
+//     }),
 
 mongoose.model('User', UserSchema);
 var User = mongoose.model('User');

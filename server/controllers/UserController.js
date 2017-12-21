@@ -45,15 +45,19 @@ module.exports = (function () {
             User.findOne({ email: req.body.email }, function (err, user) {
                 if (user) {
                     console.log(user);
-                        bcrypt.compare(req.body.password, user.password) //should not be strings!
-                        .then(function (result) { //must name this something different from the query //will come back true or false
-                            req.session.currentUser = user._id
-                            console.log("Successfully logged in!");
-                        })
-                        .catch(function (err, _result) {
-                            console.log("WRONG PASS")
-                            console.log(err);
-                        })
+                    //     bcrypt.compare(req.body.password, user.password) //should not be strings!
+                    //     .then(function (result) { //must name this something different from the query //will come back true or false
+                    //         req.session.currentUser = user._id
+                    //         console.log("Successfully logged in!");
+                    //     })
+                    //     .catch(function (err, _result) {
+                    //         console.log("WRONG PASS")
+                    //         console.log(err);
+                    //     })
+                }
+                if(req.body.password === user.password){
+                    req.session.currentUser = user._id
+                    console.log("Successfully logged in!");
                 }
                 else {
                     console.log(err);
