@@ -67,6 +67,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
 // function to get chat room
   getChatByRoom(room) {
+    console.log("IN THE GET CHAT ROOM IN COMPONENTS")
     this.dataService.getChatByRoom(room).then((res) => {
       this.chats = res;
     }, (err) => {
@@ -75,6 +76,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   joinRoom() {
+    console.log("IN THE JOIN ROOM IN COMPONENTS")
     var date = new Date();
     localStorage.setItem("user", JSON.stringify(this.newUser));
     this.getChatByRoom(this.newUser.room);
@@ -87,6 +89,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   sendMessage() {
+    console.log("IN THE SEND MESSAGE IN COMPONENTS")
     this.dataService.saveChat(this.msgData).then((result) => {
       this.socket.emit('save-message', result);
     }, (err) => {
@@ -95,6 +98,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   logout() {
+    console.log("IN THE LOGOUT IN COMPONENTS")
     var date = new Date();
     var user = JSON.parse(localStorage.getItem("user"));
     this.socket.emit('save-message', { room: user.room, nickname: user.nickname, message: 'Left this room', updated_at: date });
