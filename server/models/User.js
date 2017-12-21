@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var error;
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
 var UserSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -48,12 +48,12 @@ var UserSchema = new mongoose.Schema({
     }],
 }, { timestamps: true });
 
-UserSchema.pre('save', function (done) {
-    console.log("HASHING NOW.. HASHING NOW..");
-    var hashed_password = bcrypt.hashSync(this.password, 10);
-    this.password = hashed_password;
-    done();
-});
+// UserSchema.pre('save', function (done) {
+//     console.log("HASHING NOW.. HASHING NOW..");
+//     var hashed_password = bcrypt.hashSync(this.password, 10);
+//     this.password = hashed_password;
+//     done();
+// });
 
 
 mongoose.model('User', UserSchema);

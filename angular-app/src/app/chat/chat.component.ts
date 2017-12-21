@@ -13,12 +13,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
-  // messages = [];
-  // connection;
-  // message;
-
   chats: any = [];
-  socket = io('http://localhost:4000');
+  socket = io('http://localhost:4000');  
   joinned: boolean = false;
   newUser = { 
     nickname: '', 
@@ -31,26 +27,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   constructor(private _router: Router, private _route: ActivatedRoute, private dataService: DataService) {}
 
-    // sendMessage() {
-    //   this.dataService.sendMessage(this.message);
-    //   this.message = '';
-    // }
-
-    // ngOnInit() {
-    //   this.connection = this.dataService.getMessages().subscribe(message => {
-    //     this.messages.push(message);
-    //   })
-    // }
-
-    // ngOnDestroy() {
-    //   this.connection.unsubscribe();
-    // }
-
   ngOnInit() {
     var user = JSON.parse(localStorage.getItem("user"));
     if (user !== null) {
       this.getChatByRoom(user.room); // function callback
-      console.log('USER IS NOT NULL -- IN CHAT ROOM')
+      console.log('IN CHAT ROOM')
       this.msgData = 
       { room: user.room, 
         nickname: user.nickname, 
@@ -61,7 +42,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.socket.on('new-message', function (data) {
       if (data.message.room === JSON.parse(localStorage.getItem("user")).room) {
         console.log('SOCKET IS WORKING!')
-        this.chats.push(data.message); // appending the message to chats 
+        this.chats.push(data.message); // appending the message to chats
+        console.log('PUSHING DATA!') 
+        console.log(data);
         this.msgData = { 
           room: user.room, 
           nickname: user.nickname, 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers  } from '@angular/http';
 import { BehaviorSubject } from 'Rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -8,14 +8,9 @@ import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 @Injectable()
 export class DataService {
-
-    private url = 'http://localhost:4000';
-    private socket;
-    private modals: any[] = [];
     
   allusers: BehaviorSubject<any[]> = new BehaviorSubject([]);
   allteams: BehaviorSubject<any[]> = new BehaviorSubject([]);
-//   allmessages: BehaviorSubject<any[]> = new BehaviorSubject([]); // not sure if I need this yet
   allchannels: BehaviorSubject<any[]> = new BehaviorSubject([]);
 
   constructor(private _http: Http) { }
@@ -87,26 +82,9 @@ export class DataService {
 
 // CHAT ROOM // \\ // \\ // \\ // \\ // \\ do not touch // \\
 
-    // sendMessage(message) {
-    //     this.socket.emit('add-message', message);
-    // }
-
-    // getMessages() {
-    //     let observable = new Observable(observer => {
-    //         this.socket = io(this.url);
-    //         this.socket.on('message', (data) => {
-    //             observer.next(data);
-    //         });
-    //         return () => {
-    //             this.socket.disconnect();
-    //         };
-    //     })
-    //     return observable;
-    // }  
-
     getChatByRoom(room) {
         return new Promise((resolve, reject) => {
-            console.log("in get CHAT ROOOM")
+            console.log("TRYING TO GET ROOM ..YOU'RE IN THE DATA SERVICE.. ")
             this._http.get('/chat/' + room)
                 .map(res => res.json())
                 .subscribe(res => {
@@ -117,9 +95,22 @@ export class DataService {
         });
     }
 
+    showChat(id) {
+        return new Promise((resolve, reject) => {
+            console.log("in SHOW CHAT JS!")
+            this._http.get('/chat/' + id)
+                .map(res => res.json())
+                .subscribe(res => {
+                    resolve(res)
+                }, (err) => {
+                    reject(err);
+                });
+        });
+    }
+
     saveChat(data) {
         return new Promise((resolve, reject) => {
-            console.log("in get SAVE CHAT")
+            console.log("YOU'RE IN THE DATA SERVICE.. TRYING TO SEND MESSAGE")
             this._http.post('/chat', data)
                 .map(res => res.json())
                 .subscribe(res => {
@@ -128,6 +119,33 @@ export class DataService {
                     reject(err);
                 });
         });
+    }
+
+    updateChat(id, data) {
+        return new Promise((resolve, reject) => {
+            this._http.put('/chat/' + id, data)
+                .map(res => res.json())
+                .subscribe(res => {
+                    resolve(res);
+                }, (err) => {
+                    reject(err);
+                });
+        });
+    }
+
+    deleteChat(id) {
+        return new Promise((resolve, reject) => {
+            this._http.delete('/chat/' + id)
+                .subscribe(res => {
+                    resolve(res);
+                }, (err) => {
+                    reject(err);
+                });
+        });
+    }
+
+    private handleError(error: any): Promise<any> {
+        return Promise.reject(error.message || error);
     }
 // \\ end of chat room \\//\\
 
