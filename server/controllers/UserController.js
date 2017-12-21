@@ -1,7 +1,9 @@
 
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+
 var bcrypt = require('bcryptjs');
+
 module.exports = (function () {
 
 
@@ -28,14 +30,13 @@ module.exports = (function () {
                 if (error) {
                     console.log('===-- ERRRORRR --====')
                     console.log(error)
+
                     return res.json({ 'error': error });
                 }
                 else {
                     console.log('MAMA, I MADE IT!')
                     console.log('THIS USER IS', person)
-                    req.session.currentUser = users._id
-                    console.log(req.session.currentUser)
-                    return res.json({'newPerson': person})
+
                 }
                 // User.insert(users, {w:1}, function(err){
                 //     return res.json()})
@@ -75,8 +76,6 @@ module.exports = (function () {
             //         return res.json({'newPerson': person})
             //     }
 
-            // });
-
         logging: function (req, res) {
             console.log("IN: User controller | logging")
             const email = req.body.email;
@@ -111,20 +110,20 @@ module.exports = (function () {
 
         },
 
-        getAll: function (req, res) {
-            console.log('SOMETHING IS HERE')
-            User.find({}, function (error, response) {
-                console.log('ERRORS,', error);
-                if (error || response == null) {
-                    console.log('ERRRORRRR')
-                    return res.json({ 'error': error, 'response': response })
-                } else {
-                    console.log('YASS')
-                    // return res.json({ 'response': response })
-                    return res.json(response);
-                }
-            })
-        }
+        // getAll: function (req, res) {
+        //     console.log('SOMETHING IS HERE')
+        //     User.find({}, function (error, response) {
+        //         console.log('ERRORS,', error);
+        //         if (error || response == null) {
+        //             console.log('ERRRORRRR')
+        //             return res.json({ 'error': error, 'response': response })
+        //         } else {
+        //             console.log('YASS')
+        //             // return res.json({ 'response': response })
+        //             return res.json(response);
+        //         }
+        //     })
+        // }
 
     };
 })();

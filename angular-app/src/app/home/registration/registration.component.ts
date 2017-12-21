@@ -24,7 +24,7 @@ export class RegistrationComponent implements OnInit {
     console.log(this.newPerson);
     this._dataService.addUser(this.newPerson)
       .then(response => this.submitted = response)
-    this._dataService.getUser()
+    // this._dataService.getUser()
     this.newPerson = {
       email: '',
       fullname: '',

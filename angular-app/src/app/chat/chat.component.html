@@ -1,17 +1,14 @@
-<!-- <div *ngFor="let message of messages">
-  {{message.text}}
-</div>
-<input [(ngModel)]="message" />
-<button (click)="sendMessage()">Send</button> --> 
 
+<a [routerLink]="['/', 'editProfile']">Edit my profile</a>
 <div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-lg-9">
       <div class="panel panel-primary" *ngIf="joinned; else joinroom">
         <div class="panel-heading">
-          <span class="glyphicon glyphicon-comment"></span> {{ msgData.room }}
+          <span class="glyphicon glyphicon-comment"></span> <span class="header">{{ msgData.room }} </span>
           <div class="btn-group pull-right">
-            <button type="button" class="btn btn-default btn-xs" (click)="logout()">
+            <button type="button" class="btn btn-primary btn-sm" (click)="logout()">
               Logout
             </button>
           </div>
@@ -30,7 +27,7 @@
                     <small class="pull-right text-muted">
                       <span class="glyphicon glyphicon-time"></span>{{ c.updated_at | date: 'medium' }}</small>
                   </div>
-                  <p>{{ c.message }}</p>
+                  <p class="messages">{{ c.message }}</p>
                 </div>
               </div>
 
@@ -72,9 +69,9 @@
                 name="message" class="form-control input-sm" 
                 placeholder="Type your message here..." 
                 required=""/>
-              <span class="input-group-btn">
-                <button class="btn btn-warning btn-sm" id="btn-chat" [disabled]="!msgForm.form.valid">Send</button>
-              </span>
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" [disabled]="!msgForm.form.valid">Send</button>
+              </div>
             </div>
 
           </form>
@@ -100,7 +97,7 @@
               </div>
 
               <div class="form-group">
-                <button type="submit" class="btn btn-success" [disabled]="!joinForm.form.valid">Join</button>
+                <button type="submit" class="btn btn-success disabled" [disabled]="!joinForm.form.valid">Join</button>
               </div>
 
             </form>
