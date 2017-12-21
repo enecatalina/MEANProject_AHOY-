@@ -51,11 +51,16 @@ var UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // UserSchema.pre('save', function (done) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> c8f4f85893057a814ca105e67b34cf5ad89e5182
 //     console.log("HASHING NOW.. HASHING NOW..");
 //     var hashed_password = bcrypt.hashSync(this.password, 10);
 //     this.password = hashed_password;
 //     done();
 // });
+<<<<<<< HEAD
 // UserSchema.pre('save', function (done) {
 //     console.log("IN START OF PRE FUNCTION")
 //     if (User.findOne({ email: req.body.email })) {
@@ -63,6 +68,9 @@ var UserSchema = new mongoose.Schema({
 //         done();
 //     }
 // });
+=======
+
+>>>>>>> c8f4f85893057a814ca105e67b34cf5ad89e5182
 //     console.log("IN START OF PRE FUNCTION")
 //     bcrypt.hash(this.password, 10)
 //         .then(hashed_password => { //this is the hashed password! now set what the user has just entered in here as this hashed password
@@ -75,6 +83,10 @@ var UserSchema = new mongoose.Schema({
 //             done();
 //         });
 //     }),
+<<<<<<< HEAD
+=======
+
+>>>>>>> c8f4f85893057a814ca105e67b34cf5ad89e5182
 
 mongoose.model('User', UserSchema);
 var User = mongoose.model('User');

@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  fullImagePath: String;
   title = 'app';
 
+  constructor(){
+    this.fullImagePath = '/assets/images/title.png'
+  }
+
 }
+
 

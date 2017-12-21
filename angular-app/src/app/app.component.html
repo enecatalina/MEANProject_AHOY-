@@ -1,3 +1,7 @@
+<div class="contain">
+    <a [routerLink]="['/']">Home</a> | <a [routerLink]="['createuser']">Create User</a> | <a [routerLink]="['Team']">Create a Team</a> |
+    <a [routerLink]="['chat']">Chat</a> |
+    <a [routerLink]="['Team']">Create a Team</a>
 
 <a [routerLink]="['/']">Home</a> | <a [routerLink]="['createuser']">Create User</a> | <a [routerLink]="['Team']">Create a Team</a> |
 <a [routerLink]="['chat']">Chat</a> |
@@ -12,14 +16,16 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            <h1>AHOY</h1>
-            <li class="nav-item">
+            <img [src]="fullImagePath">
+            <!-- <li class="nav-item">
                 <button type="button" class="btn btn-outline-secondary btn-lg" >
                     <span class="glyphicon glyphicon-log-out"></span>LOGOUT
                 </button>
-            </li>
+            </li> -->
         </ul>
     </div>
-</nav>
-<router-outlet></router-outlet>
+
+    <router-outlet></router-outlet>
+
+</div>
 
