@@ -10,10 +10,10 @@
         [(ngModel)]='loggedPerson.email' 
         #email="ngModel"
         name="email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 
         <div class="form-group has-danger">
-          <p *ngIf="email.errors && email.dirty" class="invalid-feedback">Email is required</p>
+          <p *ngIf="!email.valid && email.touched">Email is required</p>
         </div>
 
       </div>
@@ -21,15 +21,13 @@
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" 
-        required 
+        required
         minlength="4" 
         [(ngModel)]='loggedPerson.password'
         #password="ngModel"
         name="password">
-        
-
         <div class="form-group has-danger">
-          <p *ngIf="password.errors && password.dirty" class="invalid-feedback">Password is required</p>
+          <p *ngIf="!password.valid && password.touched" class="invalid-feedback">Password is required</p>
         </div>
 
       </div>

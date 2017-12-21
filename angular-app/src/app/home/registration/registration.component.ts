@@ -32,12 +32,10 @@ export class RegistrationComponent implements OnInit {
       password: '',
     }
     console.log("IN: RegisterComponent | SUBMITTED")
-    this._route.navigateByUrl('Team')
   }
 
   ngOnInit() {
-    // var user = JSON.parse(localStorage.getItem("user"))
-    // console.log(user)
+  
   }
 
 }
