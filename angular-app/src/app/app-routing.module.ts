@@ -9,6 +9,7 @@ import { ChatComponent } from './chat/chat.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegistrationComponent } from './home/registration/registration.component';
 import { ChannelComponent } from './channel/channel.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 
@@ -53,6 +54,11 @@ const routes: Routes = [
     path: 'createchannel',
     pathMatch: 'full',
     component: ChannelComponent,
+  },
+  {
+    path: 'editProfile',
+    pathMatch: 'full',
+    component: EditProfileComponent,
   },
 
 ];

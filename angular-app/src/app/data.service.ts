@@ -7,6 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 @Injectable()
+
 export class DataService {
     
   allusers: BehaviorSubject<any[]> = new BehaviorSubject([]);
@@ -37,6 +38,7 @@ export class DataService {
         console.log('Channel:', channel);
         console.log('made it to channels data service!')
         return this._http.post('/API/createChannel', channel)
+        // return this._http.post('/API/createTeam', channel)
             .map(response => response.json())
             .toPromise()
             //check for the current user who is making the channel and attach them to this channel 
@@ -48,6 +50,12 @@ export class DataService {
         return this._http.post('/API/loggingIN', user)
             .map(response => response.json())
             .toPromise()
+    }
+    editProfile(user) {
+        console.log("THIS USER IS REQUESTING TO EDIT THEIR PROFILE:", user)
+        return this._http.post('API/editProfile', user)
+            .map(response => response.json())
+            .toPromise();
     }
 
 // finding user, team, and messages

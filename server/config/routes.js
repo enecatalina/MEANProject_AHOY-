@@ -63,7 +63,7 @@ module.exports = function (app) {
 // all get routes
 
     app.get('/API/getUser', function (req, res) {
-    UserController.getAll(req, res); })
+        UserController.getAll(req, res); })
 
     app.get('/API/getTeam', function (req, res) {
         TeamController.getAll(req, res);
@@ -83,9 +83,9 @@ module.exports = function (app) {
     app.post('/API/createTeam', function (req, res) {
         TeamController.createTeam(req, res);
     })
-    app.post('/API/createChannel', function (req, res) {
-        ChannelController.createChannel(req, res);
-    })
+    // app.post('/API/createChannel', function (req, res) {
+    //     ChannelController.createChannel(req, res);
+    // })
 
     app.post('/API/loggingIN', function (req, res) {
         UserController.logging(req, res);

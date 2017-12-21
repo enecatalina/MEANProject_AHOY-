@@ -16,6 +16,10 @@ var TeamSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     }],
+    channels: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Channel',
+    }]
 }, { timestamps: true });
 
 

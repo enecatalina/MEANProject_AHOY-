@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Team = mongoose.model('Team');
+var Channel = mongoose.model('Channel');
 module.exports = (function () {
 
 
@@ -18,12 +19,14 @@ module.exports = (function () {
             var teams = new Team();
             teams.teamName = req.body.teamName;
             teams._captain = req.body._captain;
-            // teams._user = req.body._user;
+            // teams.channels = "general";
+            // teams.channels = "random";
+            console.log(req.body)
             teams.save(function (error, team) {
                 console.log('THIS TEAM IS', teams)
                 if (error) {
                     console.log('===-- ERRRORRR --====')
-                    console.log(err)
+                    console.log(error)
                     return res.json({ 'error': error });
                 }
                 else {
@@ -31,10 +34,8 @@ module.exports = (function () {
                     console.log('THIS TEAM IS', team)
                     return res.json({ 'newTeam': team })
                 }
-
             });
-
-        },
+    },
 
         getAll: function (req, res) {
             console.log('SOMETHING IS HERE')
