@@ -86,7 +86,11 @@ module.exports = function (app) {
     app.post('/API/createChannel', function (req, res) {
         ChannelController.createChannel(req, res);
     })
- 
+
+    app.post('/API/loggingIN', function (req, res) {
+        UserController.logging(req, res);
+    })
+
     app.all("*", (request, response) => { response.sendFile(path.resolve("./angular-app/dist/index.html")) });
 
 
