@@ -12,36 +12,29 @@ export class ChannelComponent implements OnInit {
 
   NewChannel = {
     channelName: '',
-    purpose: '',
-    _user: '',
-    invited: ''
+    purpose: ''
   }
   submitted;
   ChannelList: any = [];
   currentUser = {
 
   }
-
   ngOnInit() {
     var user = JSON.parse(localStorage.getItem("user"));
     this._dataService.retreiveAllChannels(this.ChannelList)
-      .subscribe((data) => { this.ChannelList = data });
+      .subscribe((data) =>{this.ChannelList = data});
     console.log("this is the current user:", user);
     console.log("THIS IS THE LIST OF CHANNELS:", this.ChannelList);
   }
-
   onSubmit() {
-    console.log(this.NewChannel);
-    this._dataService.addChannel(this.NewChannel)
-      .then(response => this.submitted = response)
-    console.log("YAS", this.submitted);
-    this.NewChannel = {
-      channelName: '',
-      purpose: '',
-      _user: '',
-      invited: ''
-    }
-
+      console.log(this.NewChannel);
+      this._dataService.addChannel(this.NewChannel)
+        .then(response => this.submitted = response)
+      console.log("YAS", this.submitted);
+      this.NewChannel = {
+        channelName: '',
+        purpose: ''
+      }
   }
 
 
