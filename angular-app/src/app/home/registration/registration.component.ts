@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
       password: '',
     }
     console.log("IN: RegisterComponent | SUBMITTED")
-    this._route.navigateByUrl('Team')
+    this._route.navigateByUrl('chat')
   }
 
   ngOnInit() {
