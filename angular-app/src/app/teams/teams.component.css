@@ -1,11 +1,27 @@
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
-.errors{
-  color: #17a2b8;
-}
-.form-control{
-  width: 300px;
-  margin-left: 420px;
-  margin-top: 10px;
+p{
+    color: #F3969C;
+    font-size: 14px;
+    font-family: Papyrus, fantasy;
 }
 
+#inputDefault{
+  width: 600px;
+  height: 90px;
+  margin-left: 300px;  
+  border: 3px solid #F3969C;
+  font-size: 30px;
+  font-family: Papyrus, fantasy;
+} 
+
+h1{
+  color:#F3969C;
+  font-family: Papyrus, fantasy;
+  font-size: 50px;
+}
+
+label{
+  font-family: Papyrus;
+  font-size: 15px;
+}
