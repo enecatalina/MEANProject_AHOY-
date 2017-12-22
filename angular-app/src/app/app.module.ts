@@ -16,6 +16,7 @@ import { ChannelComponent } from './channel/channel.component';
 import { ChatComponent } from './chat/chat.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegistrationComponent } from './home/registration/registration.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 
@@ -30,7 +31,8 @@ import { RegistrationComponent } from './home/registration/registration.componen
     ChannelComponent,
     ChatComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

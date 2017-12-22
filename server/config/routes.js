@@ -12,58 +12,63 @@ var io = require('socket.io')(server);
 var Chat = mongoose.model('Chat');
 
 
-// chat routes // \\ do not touch
+// module.exports = router;
 
-/* GET ALL CHATS */
-router.get('/:room', function (req, res, next) {
-    Chat.find({ room: req.params.room }, function (err, chats) {
-        if (err) return next(err);
-        res.json(chats);
-    });
-});
-
-/* GET SINGLE CHAT BY ID */
-router.get('/:id', function (req, res, next) {
-    Chat.findById(req.params.id, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
-});
-
-/* SAVE CHAT */
-router.post('/', function (req, res, next) {
-    Chat.create(req.body, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
-});
-
-/* UPDATE CHAT */
-router.put('/:id', function (req, res, next) {
-    Chat.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
-});
-
-/* DELETE CHAT */
-router.delete('/:id', function (req, res, next) {
-    Chat.findByIdAndRemove(req.params.id, req.body, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
-});
-
-module.exports = router;
-
-// \\ end of chat routes \\//\\// 
+ 
 
 module.exports = function (app) {
 
 // all get routes
 
+    // chat routes // \\ do not touch
+
+    /* GET ALL CHATS */
+    app.get('/:room', function (req, res, next) {
+        Chat.find({ room: req.params.room }, function (err, chats) {
+            if (err) return next(err);
+            res.json(chats);
+        });
+    });
+
+    /* GET SINGLE CHAT BY ID */
+    app.get('/:id', function (req, res, next) {
+        Chat.findById(req.params.id, function (err, post) {
+            if (err) return next(err);
+            res.json(post);
+        });
+    });
+
+    /* SAVE CHAT */
+    app.post('/savechat', function (req, res, next) {
+        console.log("IN THE SAVE CHAT ROUTE JS!!!!!")
+        Chat.create(req.body, function (err, post) {
+            if (err) return next(err);
+            res.json(post);
+        });
+    });
+
+
+    /* UPDATE CHAT */
+    app.put('/:id', function (req, res, next) {
+        Chat.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+            if (err) return next(err);
+            res.json(post);
+        });
+    });
+
+    /* DELETE CHAT */
+    app.delete('/:id', function (req, res, next) {
+        Chat.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+            if (err) return next(err);
+            res.json(post);
+        });
+    });
+
+
+    // \\ end of chat routes \\//\\//
+
     app.get('/API/getUser', function (req, res) {
-    UserController.getAll(req, res); })
+        UserController.getAll(req, res); })
 
     app.get('/API/getTeam', function (req, res) {
         TeamController.getAll(req, res);
@@ -83,9 +88,9 @@ module.exports = function (app) {
     app.post('/API/createTeam', function (req, res) {
         TeamController.createTeam(req, res);
     })
-    app.post('/API/createChannel', function (req, res) {
-        ChannelController.createChannel(req, res);
-    })
+    // app.post('/API/createChannel', function (req, res) {
+    //     ChannelController.createChannel(req, res);
+    // })
 
     app.post('/API/loggingIN', function (req, res) {
         UserController.logging(req, res);

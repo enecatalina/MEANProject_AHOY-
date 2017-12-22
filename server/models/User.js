@@ -8,6 +8,7 @@ var UserSchema = new mongoose.Schema({
         minlength: 1,
         trim: true,
         required: true,
+        unique: true,
         validate: {
             validator: function validateEmail(email) 
             {
@@ -47,6 +48,7 @@ var UserSchema = new mongoose.Schema({
         ref: 'Chat',
     }],
 }, { timestamps: true });
+
 
 
 mongoose.model('User', UserSchema);

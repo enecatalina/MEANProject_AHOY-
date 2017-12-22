@@ -31,7 +31,7 @@ module.exports = (function () {
             channels.channelName = req.body.channelName;
             channels.purpose = req.body.purpose;
             // channels._user = req.body._user;
-            channels.invited = req.body.invited;
+            // channels.invited = req.body.invited;
             channels.save(function (error, channel) {
                 console.log('THIS CHANNEL IS', channels)
                 if (error) {
@@ -40,7 +40,7 @@ module.exports = (function () {
                     return res.json({ 'error': error });
                 }
                 else {
-                    req.session.currentUser = user._id
+                    req.session.currentUser = channel._id
                     console.log('MAMA, I MADE IT!')
                     console.log('THIS CHANNEL IS', channel)
                     return res.json({ 'newChannel': channel })

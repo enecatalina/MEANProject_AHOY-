@@ -7,6 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 @Injectable()
+
 export class DataService {
     
   allusers: BehaviorSubject<any[]> = new BehaviorSubject([]);
@@ -42,6 +43,7 @@ export class DataService {
         console.log('Channel:', channel);
         console.log('made it to channels data service!')
         return this._http.post('/API/createChannel', channel)
+        // return this._http.post('/API/createTeam', channel)
             .map(response => response.json())
             .toPromise()
             //check for the current user who is making the channel and attach them to this channel 
@@ -53,6 +55,12 @@ export class DataService {
         return this._http.post('/API/loggingIN', loggedPerson)
             .map(response => this.userSession = response.json())
             .toPromise()
+    }
+    editProfile(user) {
+        console.log("THIS USER IS REQUESTING TO EDIT THEIR PROFILE:", user)
+        return this._http.post('API/editProfile', user)
+            .map(response => response.json())
+            .toPromise();
     }
 
 // finding user, team, and messages
@@ -125,8 +133,8 @@ export class DataService {
 
     saveChat(data) {
         return new Promise((resolve, reject) => {
-            console.log("YOU'RE IN THE DATA SERVICE.. TRYING TO SEND MESSAGE")
-            this._http.post('/chat', data)
+            console.log("SAVE CHAT: YOU'RE IN THE DATA SERVICE.. TRYING TO SEND MESSAGE")
+            this._http.post('/savechat', data)
                 .map(res => res.json())
                 .subscribe(res => {
                     resolve(res);
@@ -136,9 +144,12 @@ export class DataService {
         });
     }
 
+        
+    
+
     updateChat(id, data) {
         return new Promise((resolve, reject) => {
-            this._http.put('/chat/' + id, data)
+            this._http.post('/chat/' + id, data)
                 .map(res => res.json())
                 .subscribe(res => {
                     resolve(res);

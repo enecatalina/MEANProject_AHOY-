@@ -1,28 +1,26 @@
-<div class="container-fluid">
-    <a [routerLink]="['/']">
-        Home</a> |
-    <a [routerLink]="['createuser']">Create User</a> |
-    <a [routerLink]="['Team']">Create a Team</a> |
+<div class="contain">
+    <a [routerLink]="['/']">Home</a> | <a [routerLink]="['createuser']">Create User</a> |
     <a [routerLink]="['chat']">Chat</a> |
     <a [routerLink]="['Team']">Create a Team</a>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <!-- <a class="navbar-brand" href="#">Ahoy</a> -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <a [routerLink]="['createchannel']">Create a Channel</a>
 
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <h1>AHOY</h1>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-outline-secondary btn-lg">
-                        <span class="glyphicon glyphicon-log-out"></span>LOGOUT
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
-<router-outlet></router-outlet>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <img [src]="fullImagePath">
+            <!-- <li class="nav-item">
+                <button type="button" class="btn btn-outline-secondary btn-lg" >
+                    <span class="glyphicon glyphicon-log-out"></span>LOGOUT
+                </button>
+            </li> -->
+        </ul>
+    </div>
+
+    <router-outlet></router-outlet>
+
 </div>
 

@@ -1,3 +1,8 @@
+.containter-fluid{
+    width: 1000px;
+    height: 1000px;
+}
+
 .chat
 {
     list-style: none;
@@ -5,6 +10,9 @@
     padding: 0;
 }
 
+button{
+    margin-left: 10px;
+}
 .chat li
 {
     margin-bottom: 10px;
@@ -38,6 +46,29 @@
 {
     overflow-y: scroll;
     height: 250px;
+    
+}
+.panel-heading{
+    background-color: rgb(87, 85, 85);
+}
+
+.primary-font{
+    font-size: 16px;
+}
+
+.header{
+    font-size: 14px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+img{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.messages{
+    font-size: 14px;
 }
 
 ::-webkit-scrollbar-track
