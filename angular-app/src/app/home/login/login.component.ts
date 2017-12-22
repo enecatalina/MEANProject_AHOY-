@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
+  templateUrl: './login.component.html', 
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
@@ -15,20 +15,21 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   }
-  submitted;
+  error = "";
+ 
 
   onSubmit() {
     console.log("IN: Login | onsubmit")
     console.log(this.loggedPerson);
     this._dataService.logUser(this.loggedPerson)
-      .then(response => this.submitted = response)
-    // this._dataService.getUser()
-    this.loggedPerson = {
-      email: '',
-      password: ''
-    }
-    console.log("SUBmitted in login")
-    this._route.navigateByUrl('chat')
+      .then(response => {
+        if(response.loggedIn){
+          this._route.navigateByUrl('/chat')
+        }
+        else{
+          this.error = response.Error
+        }
+      })
   }
 
   ngOnInit() {

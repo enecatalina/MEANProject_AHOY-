@@ -16,6 +16,11 @@ export class DataService {
 
   constructor(private _http: Http) { }
     
+    userSession = {}
+
+    returnSession() {
+        return this.userSession;
+    }
 // adding or creating
 
     addUser(user) {
@@ -44,11 +49,11 @@ export class DataService {
             //check for the current user who is making the channel and attach them to this channel 
     }
 
-    logUser(user){
+    logUser(loggedPerson){
         console.log("IN Service data | log user")
-        console.log("User-->", user)
-        return this._http.post('/API/loggingIN', user)
-            .map(response => response.json())
+        console.log("User-->", loggedPerson)
+        return this._http.post('/API/loggingIN', loggedPerson)
+            .map(response => this.userSession = response.json())
             .toPromise()
     }
     editProfile(user) {

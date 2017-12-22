@@ -36,8 +36,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
-    // var user = JSON.parse(localStorage.getItem("user"))
-    // console.log(user)
+  
   }
 
 }

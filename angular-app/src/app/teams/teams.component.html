@@ -1,97 +1,91 @@
-<!-- <div class="container center_div">
-  <h1>{{user}}</h1>
-  <form  #formData='ngForm' (submit)="onTeamSubmit()">
-    <input type="hidden" id="_captain" name="_captain">
-    <div class="form-group"> -->
-      <!-- <label for="exampleFormControlSelect2">Crew Name</label> -->
-      <!-- <input type="text" class="crewInput"class="form-control" id="validationCustom01" placeholder="Crew Name..." value="Crew Name...." 
-      required
-      name="teamName"
-      #teamName="ngModel"
-      [(ngModel)]="newTeam.teamName">
-    </div> -->
-<!-- 
-    <div class="form-group">
-      <label for="exampleFormControlSelect2">What will your crew use Ahoy for?</label>
-      <select class="selecters" class="form-control" id="exampleFormControlSelect2" 
-      name="reason"
-      [(ngModel)]="newTeam.reason"
-      #reason="ngModel">
-        <option value="">Select a option</option>
-        <option>Work</option>
-        <option>School</option>
-        <option>Consumer Goods</option>
-        <option>Shared interest group</option>
-        <option>Other</option>
-      </select>
-    </div>
-        <div class="validations">
-          <span *ngIf="!reason.valid && reason.touched" class="errors">Please select a option!</span>
-        </div>
 
-    <div class="form-group">
-      <label for="exampleFormControlSelect2">What kind of crew is it?</label>
-      <select  class="selecters" class="form-control" id="exampleFormControlSelect2"
-      name="typeofCrew"
-      [(ngModel)]='newTeam.typeofCrew'
-      #typeofCrew="ngModel">
-        <option value="">Select a option</option>
-        <option>Consumer Goods</option>
-        <option>Financial Services</option>
-        <option>Government</option>
-        <option>Healthcare</option>
-        <option>Media</option>
-        <option>NonProfit</option>
-        <option>Retail</option>
-        <option>Technology</option>
-        <option>Other</option>
-      </select>
-    </div>
-        <div class="validations">
-          <span *ngIf="!typeofCrew.valid && !typeofCrew.touched" class="errors"> Please select a option!</span>
-        </div>
+<div class="container center-div">
+  <h1>Welcome ...</h1>
+  <form #formData='ngForm' (submit)="onTeamSubmit()">
+    <fieldset>
+      <div class="">
+          <div class="form-group">
+            <input type="hidden" id="_captain" name="_captain">
+            <label class="col-form-label" for="inputDefault"></label>
+            <input type="text" class="form-control" placeholder="What will your crew name be...." id="inputDefault" required name="teamName"
+              #teamName="ngModel" [(ngModel)]="newTeam.teamName">
+          </div>
 
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">How big is your crew?</label>
-      <select  class="selecters" class="form-control" id="exampleFormControlSelect1"
-      name="crewSize"
-      [(ngModel)]="newTeam.crewSize"
-      #crewSize="ngModel">
-        <option value="">Select a option</option>
-        <option>1-10</option>
-        <option>11-50</option>
-        <option>51-100</option>
-        <option>101-250</option>
-        <option>251-500</option>
-        <option>501-1000</option>
-      </select>
-    </div>
-        <div class="validations">
-          <span *ngIf="!crewSize.valid && !crewSize.touched" class="errors"> Please select a option!</span>
-        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleSelect1">What will your crew use Ahoy for?</label>
+        <select class="form-control" id="exampleSelect2" 
+        name="reason" [(ngModel)]="newTeam.reason" #reason="ngModel">
+          <!-- <option value="Select A Option">Select a option</option> -->
+          <option>Work</option>
+          <option>School</option>
+          <option>Consumer Goods</option>
+          <option>Shared interest group</option>
+          <option>Other</option>
+        </select>
 
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">What role do you play in your crew?</label>
-      <select  class="selecters" class="form-control" id="exampleFormControlSelect1"
-      name="role"
-      [(ngModel)]="newTeam.role"
-      #role="ngModel">
-        <option value="">Select a option</option>
-        <option>Sales</option>
-        <option>Researcher</option>
-        <option>Operations</option>
-        <option>Product Management</option>
-        <option>Marketing</option>
-        <option>Media/Communications</option>
-        <option>Media/Communications</option>
-      </select>
-    </div>
-        <div class="validations">
-          <span *ngIf="!role.valid && !role.touched" class="errors"> Please select a option!</span>
+        <div class="form-group has-danger">
+          <p *ngIf="!reason.valid && reason.touched">Required</p>
         </div>
-    <br>
-    <button type="submit" class="btn btn-info" [disabled]="!formData.form.valid">Submit</button>
+      </div>
+      <div class="form-group">
+        <label for="exampleSelect1">What kind of crew is it?</label>
+        <select class="form-control" id="exampleSelect2" 
+        name="typeofCrew" [(ngModel)]='newTeam.typeofCrew' #typeofCrew="ngModel">
+          <!-- <option value="Select A Option">Select a option</option> -->
+          <option>Consumer Goods</option>
+          <option>Financial Services</option>
+          <option>Government</option>
+          <option>Healthcare</option>
+          <option>Media</option>
+          <option>NonProfit</option>
+          <option>Retail</option>
+          <option>Technology</option>
+          <option>Other</option>
+        </select>
+
+        <div class="form-group has-danger">
+          <p *ngIf="!typeofCrew.valid && typeofCrew.touched">Required</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleSelect1">How big is your crew?</label>
+        <select class="form-control" id="exampleSelect2" 
+        name="crewSize" [(ngModel)]="newTeam.crewSize" #crewSize="ngModel">
+          <!-- <option value="Select A Option">Select a option</option> -->
+          <option>1-10</option>
+          <option>11-50</option>
+          <option>51-100</option>
+          <option>101-250</option>
+          <option>251-500</option>
+          <option>501-1000</option>
+        </select>
+
+        <div class="form-group has-danger">
+          <p *ngIf="!crewSize.valid && crewSize.touched">Required</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleSelect1">What role do you play in your crew?</label>
+        <select class="form-control" id="exampleSelect2" 
+        name="role" [(ngModel)]="newTeam.role" #role="ngModel">
+          <!-- <option value="Select A Option">Select a option</option> -->
+          <option>Sales</option>
+          <option>Researcher</option>
+          <option>Operations</option>
+          <option>Product Management</option>
+          <option>Marketing</option>
+          <option>Media/Communications</option>
+        </select>
+
+        <div class="form-group has-danger">
+          <p *ngIf="!role.valid && role.touched">Required</p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!formData.form.valid">Submit</button>
+    </fieldset>
   </form>
 </div>
 
- -->
+

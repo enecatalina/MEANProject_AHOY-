@@ -1,33 +1,13 @@
-/* /* ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-li{
-    display: inline;
-    border-right: 1px solid black;
-    /* margin-right: 20px; */
-/* }
-.errors{
-    color: red;
-} */ 
 
-/* .header{
-    border: 6px solid #ead5b7
-} */
-.header h1{
-    align-content: center;
-    margin-left: 450px;
-}
 
 h1 {
 	font-family: Papyrus, fantasy;
-	font-size: 80px;
+	font-size: 100px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: bolder;
     line-height: 100px;
-    margin-left: 400px;
+    margin-left: 600px;
     margin-top: 30px;
 } 
 
@@ -35,6 +15,11 @@ button{
     margin-left: 300px;
     font-size: 15px
 }
+
+/* .container-fluid{
+   
+} */
+=======
 img{
     margin-left: 415px;
 }
@@ -42,5 +27,6 @@ img{
 .contain{
     background-color: rgb(166, 236, 241);
 }
+
 
 
