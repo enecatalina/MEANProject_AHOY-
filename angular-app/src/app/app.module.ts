@@ -17,6 +17,7 @@ import { ChatComponent } from './chat/chat.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegistrationComponent } from './home/registration/registration.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 
@@ -32,7 +33,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     ChatComponent,
     LoginComponent,
     RegistrationComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
