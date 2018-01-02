@@ -37,7 +37,7 @@ module.exports = (function () {
                 if (error) {
                     console.log('===-- ERRRORRR --====')
                     console.log(err)
-                    return res.json({ 'error': error });
+                    // return res.json({ 'error': error });
                 }
                 else {
                     req.session.currentUser = channel._id

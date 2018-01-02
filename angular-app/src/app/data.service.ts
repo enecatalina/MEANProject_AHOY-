@@ -145,8 +145,6 @@ export class DataService {
     }
 
         
-    
-
     updateChat(id, data) {
         return new Promise((resolve, reject) => {
             this._http.post('/chat/' + id, data)

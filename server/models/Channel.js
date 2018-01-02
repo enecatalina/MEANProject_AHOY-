@@ -8,10 +8,10 @@ var ChannelSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    _anchor: { //logged user in session
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
+    // _anchor: { //logged user in session
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User',
+    // },
     purpose: {
         type: String,
         required: true

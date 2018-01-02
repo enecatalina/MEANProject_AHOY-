@@ -1,26 +1,19 @@
 <div class="contain">
-    <a [routerLink]="['/']">Home</a> | <a [routerLink]="['createuser']">Create User</a> |
-    <a [routerLink]="['chat']">Chat</a> |
-    <a [routerLink]="['Team']">Create a Team</a>
-    <a [routerLink]="['createchannel']">Create a Channel</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
+    <router-outlet></router-outlet>
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <img [src]="fullImagePath">
-            <!-- <li class="nav-item">
-                <button type="button" class="btn btn-outline-secondary btn-lg" >
-                    <span class="glyphicon glyphicon-log-out"></span>LOGOUT
-                </button>
-            </li> -->
         </ul>
+        
     </div>
+    
 
-    <router-outlet></router-outlet>
+    
 
 </div>
 
