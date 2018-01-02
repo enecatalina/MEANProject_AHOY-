@@ -19,7 +19,7 @@ export class DataService {
     userSession: BehaviorSubject<any> = new BehaviorSubject([]);
 
     returnSession() {
-        return this.userSession.getValue();
+        // return this.userSession.getValue();
     }
 // adding or creating
 
