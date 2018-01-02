@@ -43,7 +43,7 @@ module.exports = (function () {
                 console.log('response:', resultResponse)
                 if (errors || resultResponse == null) {
                     console.log('===ERROR FINDING USER===')
-                    return res.json({ Error: 'Password or email does not match' })
+                    return res.json({ Error: 'Email does not match ' })
                 } else {
                     console.log('===COMPARING PASSWORD===')
                     // console.log('req.body.password:', req.body.password)
@@ -62,7 +62,7 @@ module.exports = (function () {
                         return res.json( response )
                     } else {
                         console.log('===FAILED COMPARING PASSWORDS===')
-                        return res.json({ Error: 'Password or email does not match', loggedIn: false })
+                        return res.json({ Error: 'Password does not matc', loggedIn: false })
                     }
                 }
             });
