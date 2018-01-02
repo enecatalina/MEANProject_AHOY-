@@ -56,9 +56,9 @@ module.exports = (function () {
                     return res.json({ Error: 'Password or email does not match' })
                 } else {
                     console.log('===COMPARING PASSWORD===')
-                    console.log('req.body.password:', req.body.password)
+                    // console.log('req.body.password:', req.body.password)
                     if (bcrypt.compareSync(req.body.password, resultResponse.password)) {
-                        console.log(resultResponse.password)
+                        // console.log(resultResponse.password)
                         let response = {
                             _id: resultResponse._id,
                             email: resultResponse.email,
@@ -66,7 +66,8 @@ module.exports = (function () {
                             displayname: resultResponse.displayname,
                             loggedIn: true
                         }
-                        req.session.currentUser = resultResponse._id
+                        req.session.currentUser = response
+                        // req.session.currentUser = resultResponse._id
                         console.log("SESSION ID: ", req.session.currentUser)
                         return res.json( response )
                     } else {
@@ -77,20 +78,21 @@ module.exports = (function () {
             });
         },
 
-        // getAll: function (req, res) {
-        //     console.log('SOMETHING IS HERE')
-        //     User.find({}, function (error, response) {
-        //         console.log('ERRORS,', error);
-        //         if (error || response == null) {
-        //             console.log('ERRRORRRR')
-        //             return res.json({ 'error': error, 'response': response })
-        //         } else {
-        //             console.log('YASS')
-        //             // return res.json({ 'response': response })
-        //             return res.json(response);
-        //         }
-        //     })
-        // }
+        getAll: function (request, response) {
+            console.log('===GETTING LOGGED IN USER===')
+            User.find({email : response.email }, function (error, response) {
+                console.log(response.email)
+                console.log('ERRORS,', error);
+                if (error || response == null) {
+                    console.log('ERRRORRRR')
+                    return res.json({ 'error': error, 'response': response })
+                } else {
+                    console.log('YASS')
+                    // return res.json({ 'response': response })
+                    return res.json(response);
+                }
+            })
+        }
 
     };
 })();

@@ -16,10 +16,10 @@ export class DataService {
 
   constructor(private _http: Http) { }
     
-    userSession = {}
+    userSession: BehaviorSubject<any> = new BehaviorSubject([]);
 
     returnSession() {
-        return this.userSession;
+        return this.userSession.getValue();
     }
 // adding or creating
 
