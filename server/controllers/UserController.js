@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-// var bcrypt = require('bcrypt-as-promised');
+var bcrypt = require('bcryptjs');
 module.exports = (function () {
 
 
@@ -36,36 +36,6 @@ module.exports = (function () {
 
             });
     },
-
-        logging: function (req, res) {
-            console.log("IN: User controller | logging")
-            const email = req.body.email;
-            const password = req.body.password;
-            console.log(req.body.password);
-            User.findOne({ email: req.body.email }, function (err, user) {
-                if (user) {
-                    console.log(user);
-                    //     bcrypt.compare(req.body.password, user.password) //should not be strings!
-                    //     .then(function (result) { //must name this something different from the query //will come back true or false
-                    //         req.session.currentUser = user._id
-                    //         console.log("Successfully logged in!");
-                    //     })
-                    //     .catch(function (err, _result) {
-                    //         console.log("WRONG PASS")
-                    //         console.log(err);
-                    //     })
-                }
-                if(req.body.password === user.password){
-                    req.session.currentUser = user._id
-                    console.log("Successfully logged in!");
-                }
-                else {
-                    console.log(err);
-                    return res.json({ err: 'Password or email does not match', loggedIn: false })
-                }
-            })
-
-
         logging :function(req, res) {
             console.log('===INSIDE USER LOGIN CONTROLLER===')
             console.log('req.body:', req.body)
