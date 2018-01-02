@@ -31,6 +31,7 @@ export class RegistrationComponent implements OnInit {
       displayname: '',
       password: '',
     }
+    this._route.navigateByUrl('/chat')
     console.log("IN: RegisterComponent | SUBMITTED")
     this._route.navigateByUrl('chat')
   }

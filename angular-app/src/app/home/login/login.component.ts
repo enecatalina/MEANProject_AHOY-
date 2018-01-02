@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
     password: ''
   }
   error = "";
+
+  currentUser = {}
  
 
   onSubmit() {
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
     this._dataService.logUser(this.loggedPerson)
       .then(response => {
         if(response.loggedIn){
+          this._dataService.returnSession()
           this._route.navigateByUrl('/chat')
         }
         else{
@@ -33,6 +36,17 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._dataService.userSession.subscribe(
+      (user) => {
+        console.log(user);
+        if (user['loggedIn']) {
+
+          this.currentUser = user;
+          this._route.navigateByUrl('/chat')
+        }
+      });
+
+    
   }
 
 }
