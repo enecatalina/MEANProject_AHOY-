@@ -3,8 +3,24 @@
     height: 1000px;
 }
 
+.userbar{
+    width: 200px;
+    height: 400px;
+    border: white solid;
+    background: rgba(255, 255, 255, 0.644);
+    display: block;
+    margin-left: 60px;
+}
+.headeruser{
+    padding-left: 50px;
+    font-size: 18px;
+    color: rgb(204, 7, 7);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .row{
-    margin-left: 200px;
+    margin-left: 300px;
+    margin-top: -400px;
 }
 
 .chat
@@ -77,7 +93,7 @@ img{
 
 ::-webkit-scrollbar-track
 {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
     background-color: #F5F5F5;
 }
 
@@ -89,6 +105,6 @@ img{
 
 ::-webkit-scrollbar-thumb
 {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
     background-color: #555;
 }

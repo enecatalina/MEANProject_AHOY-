@@ -1,9 +1,8 @@
-
-
-<a [routerLink]="['/', 'editProfile']">Edit my profile</a>
-<div class="container">
-{{user.email}}
+<div class="userbar">
+  <span class="headeruser">User Profile: {{user.email}}</span>
+  <a [routerLink]="['/', 'editProfile']">Edit my profile</a>
 </div>
+
 
 <!-- <a [routerLink]="['/', 'editProfile']">Edit my profile</a> -->
 
