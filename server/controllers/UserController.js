@@ -47,7 +47,9 @@ module.exports = (function () {
                 } else {
                     console.log('===COMPARING PASSWORD===')
                     // console.log('req.body.password:', req.body.password)
-                    if (bcrypt.compareSync(req.body.password, resultResponse.password)) {
+                    // if (bcrypt.compareSync(req.body.password, resultResponse.password)) 
+                    if (req.body.password === resultResponse.password)
+                    {
                         // console.log(resultResponse.password)
                         let response = {
                             _id: resultResponse._id,
@@ -59,7 +61,7 @@ module.exports = (function () {
                         req.session.currentUser = response
                         // req.session.currentUser = resultResponse._id
                         console.log("SESSION ID: ", req.session.currentUser)
-                        return res.json( response )
+                        return res.json(response)
                     } else {
                         console.log('===FAILED COMPARING PASSWORDS===')
                         return res.json({ Error: 'Password or email does not match', loggedIn: false })

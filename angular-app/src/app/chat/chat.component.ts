@@ -24,10 +24,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     room: '', 
     nickname: '', 
     message: '' };
+  
+  user = [];
 
   constructor(private _router: Router, private _route: ActivatedRoute, private dataService: DataService) {}
 
   ngOnInit() {
+    this.user = this.dataService.returnSession();
+    console.log("this user in chat",this.user);
     var user = JSON.parse(localStorage.getItem("user"));
     if (user !== null) {
       this.getChatByRoom(user.room); // function callback
