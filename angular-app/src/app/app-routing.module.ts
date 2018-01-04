@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
 import { TeamsComponent } from './teams/teams.component';
 import { ChatComponent } from './chat/chat.component';
 import { LoginComponent } from './home/login/login.component';
@@ -27,12 +26,12 @@ const routes: Routes = [
       {path: 'register', component: RegistrationComponent}
     ]
   },
-  {
-    path: 'createuser',
-    pathMatch: 'full',
-    component: UserComponent,
-    children: [],
-  },
+  // {
+  //   path: 'createuser',
+  //   pathMatch: 'full',
+  //   component: RegistrationComponent,
+  //   children: [],
+  // },
   {
     path: 'Team',
     pathMatch: 'full',
@@ -44,12 +43,12 @@ const routes: Routes = [
     component: ChatComponent,
     children: [],
   },
-  // {
-  //   path: '**', //this was preventing my form from channel component from displaying
-  //   pathMatch: 'full',
-  //   component: PagenotfoundComponent,
-  //   children: [],
-  // },
+  {
+    path: '**', //this was preventing my form from channel component from displaying
+    pathMatch: 'full',
+    component: PagenotfoundComponent,
+    children: [],
+  },
   {
     path: 'createchannel',
     pathMatch: 'full',

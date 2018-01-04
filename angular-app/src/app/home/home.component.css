@@ -1,8 +1,16 @@
 button {
-    padding: 20px;
-    width: 200px;
-    margin: 25px;
-    margin-top: 100px;
-     
+    padding: 25px;
+    width: 250px;
+    margin: 30px;
+    margin-top: 400px;
+    font-size: 30px;
+    background-color: #c02327;
 }
 
+
+img {
+    position: fixed;
+    left: 45%;
+    margin-top: 10px;
+    margin-left: -150px;
+}
