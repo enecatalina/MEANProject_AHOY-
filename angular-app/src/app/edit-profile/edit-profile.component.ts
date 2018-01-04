@@ -26,7 +26,7 @@ export class EditProfileComponent implements OnInit {
       fullname: '',
       email: ''
     }
-    this._route.navigateByUrl('chat');
+    this._route.navigateByUrl('/chat');
   }
   ngOnInit() { //using session to load user information 
     this.user = this._dataService.returnSession();
