@@ -23,7 +23,6 @@ module.exports = function (app) {
     // chat routes // \\ do not touch
 
     /* GET ALL CHATS */ // use: '/:room'
-    // app.get('/:room', function (req, res, next) {
     app.get('/chat/:room', function (req, res, next) {
         Chat.find({ room: req.params.room }, function (err, chats) {
             if (err) return next(err);

@@ -10,6 +10,7 @@ import * as io from "socket.io-client";
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
+  fullImagePath: String;
 
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
@@ -28,7 +29,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   user = [];
   channels = [];
 
-  constructor(private _router: Router, private _route: ActivatedRoute, private dataService: DataService) {}
+  constructor(private _router: Router, private _route: ActivatedRoute, private dataService: DataService) {
+    this.fullImagePath = '/assets/images/popeye_profile.gif'
+  }
 
   ngOnInit() {
     this.channels = this.dataService.returnChannels();

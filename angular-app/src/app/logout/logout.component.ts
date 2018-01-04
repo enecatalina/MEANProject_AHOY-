@@ -5,17 +5,20 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: 'app-logout',
+  templateUrl: './logout.component.html',
+  styleUrls: ['./logout.component.css']
 })
-export class ToolbarComponent implements OnInit {
+export class LogoutComponent implements OnInit {
 user;
+logoutUser;
   constructor(private _router: Router, private _route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
-    // this.user = this.dataService.returnSession();
-    this.user = this._router.navigateByUrl('/login');
+    
   }
-
+  onSubmit(){
+    this.user = this.dataService.logout(this.logoutUser);
+    this._router.navigateByUrl('/login');
+  }
 }

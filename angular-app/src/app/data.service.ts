@@ -64,6 +64,15 @@ export class DataService {
             .map(response => response.json())
             .toPromise();
     }
+    logout(logoutUser) {
+        console.log("logging user out")
+        console.log(this.userSession.getValue())
+    
+        
+        // return this._http.post('API/logout', logoutUser)
+        //     .map(response => response.json())
+        //     .toPromise();
+    }
 
 // finding user, team, and messages
 

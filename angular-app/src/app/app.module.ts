@@ -17,6 +17,7 @@ import { LoginComponent } from './home/login/login.component';
 import { RegistrationComponent } from './home/registration/registration.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -32,7 +33,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     LoginComponent,
     RegistrationComponent,
     EditProfileComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
