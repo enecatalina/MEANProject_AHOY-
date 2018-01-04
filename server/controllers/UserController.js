@@ -43,31 +43,6 @@ module.exports = (function () {
 
             });
     },
-        // createUser: function (req, res){
-        //     console.log('IN: User Controller | createUser()')
-        //     bcrypt.hash(req.body.password, salt ,function(err, hash){
-        //         var newUser = {
-        //             email = req.body.email,
-        //             fullname = req.body.fullname,
-        //             password = hash,
-        //         }
-        //         users.save(function(error, person){
-        //             if(error){
-        //                 console.log('===-- ERRRORRR --====')
-        //                 console.log(error)
-        //             }
-        //             else {
-        //                 console.log('MAMA, I MADE IT!')
-        //                 console.log('THIS USER IS', person)
-        //                 req.session.currentUser = users._id
-        //                 console.log("THIS IS USER ID:", req.session.currentUser)
-        //                 // return res.json({'newPerson': person})
-        //                 return res.json(person);
-        //         }
-
-        //         })
-        //     })
-        // },
         
         logging :function (req, res) {
             console.log('===INSIDE USER LOGIN CONTROLLER===')
@@ -117,17 +92,6 @@ module.exports = (function () {
                     res.json(user)
                 }
             });
-            // User.findOne({
-            //     _id: rreq.session.currentUser._id
-            // }, function (err, thisperson) {
-            //     thisperson.fullname = req.body.fullname;
-            //     thisperson.displayname = req.body.displayname;
-            //     thisperson.email = req.body.email;
-            //     thisperson.save(function (err) {
-            //         console.log(err);
-            //     });
-            //     res.json(thisperson)
-            // });
             
         },
         getAll: function (request, response) {
