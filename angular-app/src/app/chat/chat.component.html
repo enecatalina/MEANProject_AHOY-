@@ -1,6 +1,9 @@
 <div class="userbar">
-  <span class="headeruser">Ahoy, {{user.fullname}}! </span><br>
-  <a [routerLink]="['/', 'editProfile']">Edit my profile</a>
+  <div class="sidebarcontext">
+    <span class="headeruser">Ahoy, {{user.fullname}}! </span><br>
+    <a [routerLink]="['/', 'editProfile']">Edit my profile</a>
+    <a [routerLink]="['/', 'createchannel']">Add A Channel</a>
+  </div>
 </div>
 
 <!-- <a [routerLink]="['/', 'editProfile']">Edit my profile</a> -->
@@ -88,7 +91,7 @@
             <h1>Select A Channel</h1>
             <form (ngSubmit)="joinRoom()" #joinForm="ngForm">
               <div class="form-group">
-                <input type="text" class="form-control" [(ngModel)]="newUser.nickname" name="nickname" placeholder="{{user.displayname}}" value="{{user.displayname}}" required=""/>
+                <input type="text" class="form-control" [(ngModel)]="newUser.nickname" name="nickname" placeholder="Display Name" value="{{user.fullname}}" required=""/>
               </div>
 
               <div class="form-group">

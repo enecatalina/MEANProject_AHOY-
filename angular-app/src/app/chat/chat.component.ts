@@ -84,11 +84,13 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     var date = new Date();
     localStorage.setItem("user", JSON.stringify(this.newUser));
     this.getChatByRoom(this.newUser.room);
+    console.log("this user just joined!")
     this.msgData = { 
       room: this.newUser.room, 
       nickname: this.newUser.nickname, 
       message: '' };
     this.joinned = true;
+    console.log("this user sending socket and joining now!")
     this.socket.emit('save-message', { room: this.newUser.room, nickname: this.newUser.nickname, message: 'Join this room', updated_at: date });
   }
 
@@ -107,6 +109,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     var user = JSON.parse(localStorage.getItem("user"));
     this.socket.emit('save-message', { room: user.room, nickname: user.nickname, message: 'Left this room', updated_at: date });
     localStorage.removeItem("user");
+    localStorage.clear();
     this.joinned = false;
   }
 
