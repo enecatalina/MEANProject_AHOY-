@@ -1,13 +1,14 @@
 p{
-    color: #F3969C;
+    color: #c02327;
     font-size: 14px;
 }
 .container{
-    width: 300px;
+    width: 700px;
 }
+
 .label{
     font-size: 14px;
-    color: black;
+    color: white;
     padding-bottom: 30px;
     padding-top: 30px;
     margin-left:-8px;

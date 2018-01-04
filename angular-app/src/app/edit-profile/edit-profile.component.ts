@@ -9,20 +9,28 @@ import { Router, ActivatedRoute } from '@angular/router'
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-  UserList: any[] = [];
+  // UserList: any[] = [];
   currentUser;
   submitted;
+  user = [];
+  updatePerson = {
+    fullname: '',
+    email: ''
+  }
   constructor(private _dataService: DataService, private _route: Router) { }
   onSubmit() {
-    this._dataService.editProfile(this.currentUser)
+    console.log('this edit profile component', this.updatePerson)
+    this._dataService.editProfile(this.updatePerson)
       .then(response =>this.submitted = response);
+    this.updatePerson = {
+      fullname: '',
+      email: ''
+    }
     this._route.navigateByUrl('chat');
   }
-  ngOnInit() {
-    this._dataService.retreiveAllusers(this.UserList)
-      .subscribe((data) => { this.UserList = data });
-    // console.log("this is the current user:", user);
-    console.log("THIS IS THE LIST OF CHANNELS:", this.UserList);
-  }
+  ngOnInit() { //using session to load user information 
+    this.user = this._dataService.returnSession();
+    console.log("this is current user", this.user);
 
+    }
 }

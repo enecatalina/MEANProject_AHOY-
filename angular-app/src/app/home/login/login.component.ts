@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
   error = "";
 
   currentUser = {}
+
+  userSession = []
  
 
   onSubmit() {

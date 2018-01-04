@@ -97,6 +97,10 @@ module.exports = function (app) {
         UserController.logging(req, res);
     })
 
+    app.post('/API/editProfile', function (req, res) {
+        UserController.update(req, res);
+    })
+
     app.all("*", (request, response) => { response.sendFile(path.resolve("./angular-app/dist/index.html")) });
 
 
