@@ -50,5 +50,25 @@ module.exports = (function () {
 
         },
 
-    };
+    // };
+
+        getChannel: function (request, response) {
+        console.log('===GETTING LOGGED IN USER===')
+        Channel.find({ channelName: response.channelName }, function (error, response) {
+            console.log(response.channelName)
+            console.log('ERRORS,', error);
+            if (error || response == null) {
+                console.log('ERRRORRRR')
+                return res.json({ 'error': error, 'response': response })
+            } else {
+                console.log('YASS')
+                // return res.json({ 'response': response })
+                return res.json(response);
+            }
+        })
+    }
+
+};
+// }) ();
+
 })();

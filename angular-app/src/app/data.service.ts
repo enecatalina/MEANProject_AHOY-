@@ -13,6 +13,9 @@ export class DataService {
     allusers: BehaviorSubject<any[]> = new BehaviorSubject([]);
     allteams: BehaviorSubject<any[]> = new BehaviorSubject([]);
     allchannels: BehaviorSubject<any[]> = new BehaviorSubject([]);
+    returnChannels() {
+        return this.allchannels.getValue();
+    }
     userSession: BehaviorSubject<any> = new BehaviorSubject([]);
     returnSession() {
         return this.userSession.getValue();
@@ -76,7 +79,7 @@ export class DataService {
     }
 
     getChannel() {
-        return this._http.get('/API/getChannel/:id')
+        return this._http.get('/API/getChannel')
             .map(response => this.retreiveAllChannels(response.json()))
             .toPromise();
     }
@@ -97,6 +100,8 @@ export class DataService {
     }
 
     retreiveAllChannels(newChannel) {
+        console.log("In: getting all channels")
+        console.log(newChannel)
         this.allchannels.next(newChannel);
         console.log('retreive channels,', this.allchannels)
         return this.allchannels;

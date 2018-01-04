@@ -76,7 +76,7 @@ module.exports = function (app) {
     })
 
     app.get('/API/getChannel', function (req, res) {
-        ChannelController.find(req, res);
+        ChannelController.getChannel(req, res);
     })
     
 
