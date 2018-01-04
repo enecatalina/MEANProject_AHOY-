@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
           this.currentUser = user;
           this._route.navigateByUrl('/chat')
         }
+        
       });
   }
 

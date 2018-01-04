@@ -1,0 +1,9 @@
+<!-- <p>
+  logout works!
+</p> -->
+<h2> ARE YOU SURE YOU WANT TO LOG OUT?</h2>
+<form (submit)="onSubmit()" #userForm="ngForm" class="w-100">
+ <button class="btn btn-primary">Yes, log me out</button>
+ </form> 
+ <a [routerLink]="['/chat']"><button class="btn btn-primary">No, go back</button></a>
+
