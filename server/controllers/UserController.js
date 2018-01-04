@@ -36,14 +36,16 @@ module.exports = (function () {
 
             });
     },
-        logging :function(req, res) {
+
+
+        logging :function (req, res) {
             console.log('===INSIDE USER LOGIN CONTROLLER===')
             console.log('req.body:', req.body)
             User.findOne({ email: req.body.email }, function (errors, resultResponse) {
                 console.log('response:', resultResponse)
                 if (errors || resultResponse == null) {
                     console.log('===ERROR FINDING USER===')
-                    return res.json({ Error: 'Password or email does not match' })
+                    return res.json({ Error: 'Email was not found' })
                 } else {
                     console.log('===COMPARING PASSWORD===')
                     // console.log('req.body.password:', req.body.password)
@@ -64,7 +66,7 @@ module.exports = (function () {
                         return res.json(response)
                     } else {
                         console.log('===FAILED COMPARING PASSWORDS===')
-                        return res.json({ Error: 'Password or email does not match', loggedIn: false })
+                        return res.json({ Error: 'Password does not match', loggedIn: false })
                     }
                 }
             });
