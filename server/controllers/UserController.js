@@ -117,17 +117,6 @@ module.exports = (function () {
                     res.json(user)
                 }
             });
-            // User.findOne({
-            //     _id: rreq.session.currentUser._id
-            // }, function (err, thisperson) {
-            //     thisperson.fullname = req.body.fullname;
-            //     thisperson.displayname = req.body.displayname;
-            //     thisperson.email = req.body.email;
-            //     thisperson.save(function (err) {
-            //         console.log(err);
-            //     });
-            //     res.json(thisperson)
-            // });
             
         },
         getAll: function (request, response) {
