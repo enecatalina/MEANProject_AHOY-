@@ -43,12 +43,12 @@ const routes: Routes = [
     component: ChatComponent,
     children: [],
   },
-  {
-    path: '**', //this was preventing my form from channel component from displaying
-    pathMatch: 'full',
-    component: PagenotfoundComponent,
-    children: [],
-  },
+  // {
+  //   path: '**', //this was preventing my form from channel component from displaying
+  //   pathMatch: 'full',
+  //   component: PagenotfoundComponent,
+  //   children: [],
+  // },
   {
     path: 'createchannel',
     pathMatch: 'full',
