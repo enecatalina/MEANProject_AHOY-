@@ -23,12 +23,6 @@ var UserSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    displayname: {
-        type: String,
-        minlength: 4,
-        trim: true,
-        required: true
-    },
     password: {
         type: String,
         minlength: 4,

@@ -1,6 +1,6 @@
 
 
-h1 {
+/* h1 {
 	font-family: Papyrus, fantasy;
 	font-size: 100px;
 	font-style: normal;
@@ -9,24 +9,16 @@ h1 {
     line-height: 100px;
     margin-left: 600px;
     margin-top: 30px;
-} 
+}  */
 
-button{
-    margin-left: 300px;
-    font-size: 15px
+
+img {
+    position: fixed;
+    left: 45%;
+    margin-top: 10px;
+    margin-left: -150px;
 }
 
-/* .container-fluid{
-   
-} */
-
-img{
-    margin-left: 415px;
-}
-
-.contain{
-    background-color: rgb(166, 236, 241);
-}
 
 
 

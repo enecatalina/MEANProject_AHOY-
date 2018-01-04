@@ -24,9 +24,9 @@ export class DataService {
 
     addUser(user) {
         console.log('Note:', user);
-        console.log('made it!')
+        console.log('made it in the data service!')
         return this._http.post('/API/createUser', user)
-            .map(response => response.json())
+            .map(response => this.userSession.next(response.json()))
             .toPromise()
     }
 
