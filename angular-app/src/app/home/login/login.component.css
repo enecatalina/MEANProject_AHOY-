@@ -2,3 +2,14 @@ p{
     color: #F3969C;
     font-size: 14px;
 }
+.container{
+    width: 300px;
+}
+.label{
+    font-size: 14px;
+    color: black;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    margin-left:-8px;
+    font-family: Arial, Helvetica, sans-serif;
+}

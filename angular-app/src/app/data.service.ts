@@ -10,24 +10,16 @@ import * as io from 'socket.io-client';
 
 export class DataService {
     
-  allusers: BehaviorSubject<any[]> = new BehaviorSubject([]);
-  allteams: BehaviorSubject<any[]> = new BehaviorSubject([]);
-  allchannels: BehaviorSubject<any[]> = new BehaviorSubject([]);
-
+    allusers: BehaviorSubject<any[]> = new BehaviorSubject([]);
+    allteams: BehaviorSubject<any[]> = new BehaviorSubject([]);
+    allchannels: BehaviorSubject<any[]> = new BehaviorSubject([]);
+    userSession: BehaviorSubject<any> = new BehaviorSubject([]);
+    returnSession() {
+        return this.userSession.getValue();
+    }
+    
   constructor(private _http: Http) { }
     
-    userSession = []
-
-    returnSession(loggedPerson) {
-        console.log("IN SERVICE || return session user", loggedPerson)
-        this.userSession.push(loggedPerson)
-        console.log(this.userSession)
-        return this.userSession;
-    }
-
-    retrieveLoggedUser(){
-        return this.userSession 
-    }
 // adding or creating
 
     addUser(user) {
@@ -60,8 +52,8 @@ export class DataService {
         console.log("IN Service data | log user")
         console.log("User-->", loggedPerson)
         return this._http.post('/API/loggingIN', loggedPerson)
-            .map(response => response.json())
-            .toPromise()
+            .map(response => this.userSession.next(response.json()))
+            .toPromise();
     }
     editProfile(user) {
         console.log("THIS USER IS REQUESTING TO EDIT THEIR PROFILE:", user)

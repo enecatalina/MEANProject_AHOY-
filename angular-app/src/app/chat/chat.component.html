@@ -1,5 +1,5 @@
 <div class="userbar">
-  <!-- <span class="headeruser">User Profile: {{user.email}}</span> -->
+  <span class="headeruser">Ahoy, {{user.fullname}}! </span><br>
   <a [routerLink]="['/', 'editProfile']">Edit my profile</a>
 </div>
 
@@ -91,7 +91,7 @@
             <h1>Select A Channel</h1>
             <form (ngSubmit)="joinRoom()" #joinForm="ngForm">
               <div class="form-group">
-                <input type="text" class="form-control" [(ngModel)]="newUser.nickname" name="nickname" placeholder="Nickname" required=""/>
+                <input type="text" class="form-control" [(ngModel)]="newUser.nickname" name="nickname" placeholder="{{user.displayname}}" value="{{user.displayname}}" required=""/>
               </div>
 
               <div class="form-group">

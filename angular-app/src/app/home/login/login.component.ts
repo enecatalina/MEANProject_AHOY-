@@ -11,6 +11,17 @@ export class LoginComponent implements OnInit {
 
   constructor(private _dataService: DataService, private _route: Router) { }
 
+  ngOnInit() {
+    this._dataService.userSession.subscribe(
+      (user) => {
+        console.log(user);
+        if (user['loggedIn']) {
+          this.currentUser = user;
+          this._route.navigateByUrl('/chat')
+        }
+      });
+  }
+
   loggedPerson = {
     email: '',
     password: ''
@@ -27,19 +38,14 @@ export class LoginComponent implements OnInit {
     console.log(this.loggedPerson);
     this._dataService.logUser(this.loggedPerson)
       .then(response => {
-        if(response.loggedIn){
-          this._dataService.returnSession(this.loggedPerson)
+        if(response['loggedIn']){
+          this._dataService.returnSession()
           this._route.navigateByUrl('/chat')
         }
         else{
-          this.error = response.Error
+          this.error = response['Error'];
         }
       })
-  }
-
-  ngOnInit() {
-   this.userSession = this._dataService.retrieveLoggedUser()
-  
   }
 
 }

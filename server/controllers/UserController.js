@@ -62,18 +62,20 @@ module.exports = (function () {
         //     })
         // },
         
-        logging :function(req, res) {
+        logging :function (req, res) {
             console.log('===INSIDE USER LOGIN CONTROLLER===')
             console.log('req.body:', req.body)
             User.findOne({ email: req.body.email }, function (errors, resultResponse) {
                 console.log('response:', resultResponse)
                 if (errors || resultResponse == null) {
                     console.log('===ERROR FINDING USER===')
-                    return res.json({ Error: 'Email does not match ' })
+                    return res.json({ Error: 'Email was not found' })
                 } else {
                     console.log('===COMPARING PASSWORD===')
                     // console.log('req.body.password:', req.body.password)
-                    if (bcrypt.compareSync(req.body.password, resultResponse.password)) {
+                    // if (bcrypt.compareSync(req.body.password, resultResponse.password)) 
+                    if (req.body.password === resultResponse.password)
+                    {
                         // console.log(resultResponse.password)
                         let response = {
                             _id: resultResponse._id,
@@ -85,15 +87,13 @@ module.exports = (function () {
                         req.session.currentUser = resultResponse._id
                         // req.session.currentUser = resultResponse._id
                         console.log("SESSION ID: ", req.session.currentUser)
-                        console.log("logging response-->",response)
-                        return res.json( response )
+                        return res.json(response)
                     } else {
                         console.log('===FAILED COMPARING PASSWORDS===')
-                        return res.json({ Error: 'Password does not matc', loggedIn: false })
+                        return res.json({ Error: 'Password does not match', loggedIn: false })
                     }
                 }
             });
-
 
         },
 
