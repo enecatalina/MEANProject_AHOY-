@@ -16,10 +16,17 @@ export class DataService {
 
   constructor(private _http: Http) { }
     
-    userSession: BehaviorSubject<any> = new BehaviorSubject([]);
+    userSession = []
 
-    returnSession() {
-        // return this.userSession.getValue();
+    returnSession(loggedPerson) {
+        console.log("IN SERVICE || return session user", loggedPerson)
+        this.userSession.push(loggedPerson)
+        console.log(this.userSession)
+        return this.userSession;
+    }
+
+    retrieveLoggedUser(){
+        return this.userSession 
     }
 // adding or creating
 
@@ -53,7 +60,7 @@ export class DataService {
         console.log("IN Service data | log user")
         console.log("User-->", loggedPerson)
         return this._http.post('/API/loggingIN', loggedPerson)
-            .map(response => this.userSession = response.json())
+            .map(response => response.json())
             .toPromise()
     }
     editProfile(user) {
