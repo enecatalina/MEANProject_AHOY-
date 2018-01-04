@@ -30,6 +30,10 @@ export class ChannelComponent implements OnInit {
       console.log(this.NewChannel);
       this._dataService.addChannel(this.NewChannel)
         .then(response => this.submitted = response)
+        this.NewChannel = {
+          channelName: '',
+          purpose: ''
+        }
       console.log("YAS", this.submitted);
       this.NewChannel = {
         channelName: '',
