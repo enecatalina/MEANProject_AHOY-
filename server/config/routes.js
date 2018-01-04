@@ -22,8 +22,9 @@ module.exports = function (app) {
 
     // chat routes // \\ do not touch
 
-    /* GET ALL CHATS */
-    app.get('/:room', function (req, res, next) {
+    /* GET ALL CHATS */ // use: '/:room'
+    // app.get('/:room', function (req, res, next) {
+    app.get('/chat/:room', function (req, res, next) {
         Chat.find({ room: req.params.room }, function (err, chats) {
             if (err) return next(err);
             res.json(chats);
@@ -31,7 +32,7 @@ module.exports = function (app) {
     });
 
     /* GET SINGLE CHAT BY ID */
-    app.get('/:id', function (req, res, next) {
+    app.get('/chat/:id', function (req, res, next) {
         Chat.findById(req.params.id, function (err, post) {
             if (err) return next(err);
             res.json(post);
@@ -49,7 +50,7 @@ module.exports = function (app) {
 
 
     /* UPDATE CHAT */
-    app.put('/:id', function (req, res, next) {
+    app.put('/update/:id', function (req, res, next) {
         Chat.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
             if (err) return next(err);
             res.json(post);
@@ -57,7 +58,7 @@ module.exports = function (app) {
     });
 
     /* DELETE CHAT */
-    app.delete('/:id', function (req, res, next) {
+    app.delete('/chat/:id', function (req, res, next) {
         Chat.findByIdAndRemove(req.params.id, req.body, function (err, post) {
             if (err) return next(err);
             res.json(post);
