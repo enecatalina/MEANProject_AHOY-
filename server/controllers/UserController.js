@@ -17,27 +17,58 @@ module.exports = (function () {
             var users = new User();
             users.email = req.body.email;
             users.fullname = req.body.fullname;
-            users.displayname = req.body.displayname;
             users.password = req.body.password;
             users.save(function (error, person) {
                 console.log('THIS USER IS', users)
                 if (error) {
                     console.log('===-- ERRRORRR --====')
                     console.log(error)
+                    return res.json({ Error: 'Register FAILED', registeredIn: false })
                 }
                 else {
+                    let response = {
+                        _id: person._id,
+                        email: person.email,
+                        fullname: person.fullname,
+                        displayname: person.displayname,
+                        registeredIn: true
+                    }
                     console.log('MAMA, I MADE IT!')
                     console.log('THIS USER IS', person)
-                    req.session.currentUser = users._id
+                    req.session.currentUser = response
                     console.log("THIS IS USER ID:", req.session.currentUser)
                     // return res.json({'newPerson': person})
-                    return res.json(person);
+                    return res.json(response);
                 }
 
             });
     },
+        // createUser: function (req, res){
+        //     console.log('IN: User Controller | createUser()')
+        //     bcrypt.hash(req.body.password, salt ,function(err, hash){
+        //         var newUser = {
+        //             email = req.body.email,
+        //             fullname = req.body.fullname,
+        //             password = hash,
+        //         }
+        //         users.save(function(error, person){
+        //             if(error){
+        //                 console.log('===-- ERRRORRR --====')
+        //                 console.log(error)
+        //             }
+        //             else {
+        //                 console.log('MAMA, I MADE IT!')
+        //                 console.log('THIS USER IS', person)
+        //                 req.session.currentUser = users._id
+        //                 console.log("THIS IS USER ID:", req.session.currentUser)
+        //                 // return res.json({'newPerson': person})
+        //                 return res.json(person);
+        //         }
 
-
+        //         })
+        //     })
+        // },
+        
         logging :function (req, res) {
             console.log('===INSIDE USER LOGIN CONTROLLER===')
             console.log('req.body:', req.body)
@@ -70,7 +101,6 @@ module.exports = (function () {
                     }
                 }
             });
-
 
         },
         update: function (req, res) {

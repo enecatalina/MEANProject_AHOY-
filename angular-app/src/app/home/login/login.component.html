@@ -27,7 +27,7 @@
         [(ngModel)]='loggedPerson.password'
         #password="ngModel"
         name="password"
-         [ngClass]="{'focus': password.dirty && !password.valid, 'good': password.valid}">
+         >
         <div class="form-group has-danger">
           <p *ngIf="password.errors && password.invalid && password.dirty" class="invalid-feedback">Password is required</p>
         </div>

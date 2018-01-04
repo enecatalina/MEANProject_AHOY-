@@ -40,19 +40,6 @@
       </div>
       </div>
 
-      <div class="form-group">
-        <label class="label" for="exampleInputDisplayName3">Display Name</label>
-        <input type="text" class="form-control" id="exampleInputDisplayName3" placeholder="Display Name" 
-        required 
-        minlength="4" 
-        [(ngModel)]='newPerson.displayname'
-        #displayname="ngModel" 
-        name="displayname">
-      
-        <div class="form-group has-danger">
-          <p *ngIf="!displayname.valid && displayname.touched">Display Name is required</p>
-        </div>
-      </div>
       <button class="btn btn-success" [disabled]="!userForm.valid">Submit!</button>
     </fieldset>
   </form>

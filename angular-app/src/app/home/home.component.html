@@ -1,6 +1,11 @@
+<div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+        <img [src]="fullImagePath">
+    </ul>
+</div>
 <div class="container text-center">
-<button type="button" class="btn btn-primary btn-lg" [routerLink]="['/', 'login']">Login</button>
-<button type="button" class="btn btn-primary btn-lg" [routerLink]="['/', 'register']">Register</button>
+    <button type="button" class="btn btn-primary btn-lg" [routerLink]="['/', 'login']">Login</button>   
+    <button type="button" class="btn btn-primary btn-lg" [routerLink]="['/', 'register']">Register</button>
 </div>
 
 <router-outlet></router-outlet>

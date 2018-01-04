@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
 import { TeamsComponent } from './teams/teams.component';
 import { ChannelComponent } from './channel/channel.component';
 import { ChatComponent } from './chat/chat.component';
@@ -27,7 +26,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     AppComponent,
     PagenotfoundComponent,
     HomeComponent,
-    UserComponent,
     TeamsComponent,
     ChannelComponent,
     ChatComponent,
