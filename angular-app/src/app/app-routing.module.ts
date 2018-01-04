@@ -60,6 +60,11 @@ const routes: Routes = [
     pathMatch: 'full',
     component: EditProfileComponent,
   },
+  {
+    path: 'logout',
+    pathMatch: 'full',
+    component: LoginComponent,
+  },
 
 ];
 

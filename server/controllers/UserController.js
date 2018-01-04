@@ -62,7 +62,7 @@ module.exports = (function () {
                         }
                         req.session.currentUser = response
                         // req.session.currentUser = resultResponse._id
-                        console.log("SESSION ID: ", req.session.currentUser)
+                        console.log("SESSION ID: ", req.session.currentUser._id)
                         return res.json(response)
                     } else {
                         console.log('===FAILED COMPARING PASSWORDS===')
@@ -73,7 +73,33 @@ module.exports = (function () {
 
 
         },
-
+        update: function (req, res) {
+            console.log("====UPDATING PROFILE====");
+            User.update({ _id: req.session.currentUser._id}, 
+             { fullname: req.body.fullname,  
+                email: req.body.email }, function (err, user) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log("This user is now updated to:", user);
+                    console.log("this user ID and info is:", req.session.currentUser)
+                    res.json(user)
+                }
+            });
+            // User.findOne({
+            //     _id: rreq.session.currentUser._id
+            // }, function (err, thisperson) {
+            //     thisperson.fullname = req.body.fullname;
+            //     thisperson.displayname = req.body.displayname;
+            //     thisperson.email = req.body.email;
+            //     thisperson.save(function (err) {
+            //         console.log(err);
+            //     });
+            //     res.json(thisperson)
+            // });
+            
+        },
         getAll: function (request, response) {
             console.log('===GETTING LOGGED IN USER===')
             User.find({email : response.email }, function (error, response) {

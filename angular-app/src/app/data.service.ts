@@ -55,9 +55,9 @@ export class DataService {
             .map(response => this.userSession.next(response.json()))
             .toPromise();
     }
-    editProfile(user) {
-        console.log("THIS USER IS REQUESTING TO EDIT THEIR PROFILE:", user)
-        return this._http.post('API/editProfile', user)
+    editProfile(editUser) {
+        console.log("THIS USER IS REQUESTING TO EDIT THEIR PROFILE:", editUser)
+        return this._http.post('API/editProfile', editUser)
             .map(response => response.json())
             .toPromise();
     }

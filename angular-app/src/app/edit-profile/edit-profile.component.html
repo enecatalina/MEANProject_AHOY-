@@ -1,45 +1,24 @@
-<p>
-  edit-profile works!
-</p>
 
-<div *ngFor = "let user of UserList">
-  <form (submit)="onSubmit()" #userForm="ngForm" class="w-100">
+  {{user.fullname}}
+ <form (submit)="onSubmit()" #userForm="ngForm" class="w-100">
     <div class="col-6">
       <div class="form-group">
         <span name="fullname"></span>
         Full Name
-        <input type="text" name="fullname" class="form-control" placeholder="user.fullname" 
-         minlength="4" 
-         maxlength="22"
-        [(ngModel)]='newPerson.fullname' 
-        #fullname="ngModel" />
-        <div class="errors">
-          <p *ngIf="fullname.errors && fullname.dirty"> </p>
-        </div>
-        <div class="form-group">
-          <span name="displaynameame"></span>
-        Display Name
-          <input type="text" name="displayname" class="form-control" placeholder="user.displayname" 
-           minlength="4" 
-          [(ngModel)]='newPerson.displayname'
-          #displayname="ngModel" />
-          <div class="errors">
-            <p *ngIf="purpose.errors && purpose.dirty"> </p>
-          </div>
-        Email
-          <input type="text" name="email" class="form-control" placeholder="user.email" 
-          minlength="4" 
-          [(ngModel)]='newPerson.email'
-          #email="ngModel" />
-          <div class="errors">
-            <p *ngIf="email.errors && email.dirty"> </p>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-success" *ngIf="!userForm.valid" disabled>Create Channel!</button>
-            <button type="submit" class="btn btn-success" *ngIf="userForm.valid">Create Channel!</button>
-          </div>
-        </div>
+        <input type="text" name="fullname" class="form-control" placeholder="{{user.fullname}}" 
+        [(ngModel)]= 'updatePerson.fullname'
+        #fullname ="ngModel"/>
       </div>
-    </div>
+        <div class="form-group">
+          <span name="email"></span>
+        Email
+          <input type="text" name="email" class="form-control" placeholder="{{user.email}}" 
+          [(ngModel)]= 'updatePerson.email' 
+          #email ="ngModel"/>
+        </div>
+          <div class="form-group">
+            <button class="btn btn-success" *ngIf="!userForm.valid" disabled>Update Profile!</button>
+            <button type="submit" class="btn btn-success" *ngIf="userForm.valid">Update Profile!</button>
+          </div>
+        </div>
   </form>
-</div>
